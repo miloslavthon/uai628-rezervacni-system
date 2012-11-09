@@ -1,2 +1,4 @@
 /RezervacniSystem.Web/*.user
 /*.suo
+/RezervacniSystem.Web/bin
+/RezervacniSystem.Web/obj
