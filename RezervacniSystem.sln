@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RezervacniSystem.Web", "RezervacniSystem.Web\RezervacniSystem.Web.csproj", "{99205A3A-E389-4BDB-AFFA-04611616B728}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{99205A3A-E389-4BDB-AFFA-04611616B728}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99205A3A-E389-4BDB-AFFA-04611616B728}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99205A3A-E389-4BDB-AFFA-04611616B728}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99205A3A-E389-4BDB-AFFA-04611616B728}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
