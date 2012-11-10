@@ -64,7 +64,7 @@
 							<li><a runat="server" href="~/">Úvod</a></li>
 							<li><a runat="server" href="~/Klient/Default.aspx">Klient</a></li>
 							<li><a runat="server" href="~/Poskytovatel/Default.aspx">Poskytovatel</a></li>
-							<li><a runat="server" href="~/Administrace/Default.aspx">Administrátor</a></li>
+							<li><a runat="server" href="~/Administrace/Poskytovatele.aspx">Administrátor</a></li>
 						</ul>
 					</nav>
 				</div>

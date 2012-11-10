@@ -11,7 +11,7 @@ namespace RezervacniSystem.Web.Administrace
 {
 
 
-	public partial class Default
+	public partial class Uzivatele
 	{
 	}
 }

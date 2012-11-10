@@ -7,14 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace RezervacniSystem.Web.Administrace
 {
-	public partial class Default : System.Web.UI.Page
+	public partial class Poskytovatele : System.Web.UI.Page
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			if (User.Identity.IsAuthenticated && User.Identity.Name == "admin")
-			{
-				//System.Web.Security.Roles.RoleExists
-			}
+
 		}
 	}
 }

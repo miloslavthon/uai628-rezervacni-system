@@ -1,0 +1,32 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Administrace.master.cs" Inherits="RezervacniSystem.Web.Administrace.Administrace" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="FeaturedContent" runat="server">
+	<section class="featured">
+		<div class="content-wrapper">
+			<hgroup class="title">
+				<h1>Administrace.</h1>
+			</hgroup>
+			<nav>
+				<ul id="submenu">
+					<li><a id="A1" runat="server" href="~/Administrace/Poskytovatele.aspx">Poskytovatelé</a></li>
+					<li><a id="A2" runat="server" href="~/Administrace/Uzivatele.aspx">Uživatelé</a></li>
+				</ul>
+			</nav>
+		</div>
+	</section>
+</asp:Content>
+
+<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
+
+	<hgroup class="title">
+		<h2><%: Page.Title %>.</h2>
+	</hgroup>
+
+	<section>
+		<asp:ContentPlaceHolder runat="server" ID="MainContent" />
+	</section>
+
+</asp:Content>

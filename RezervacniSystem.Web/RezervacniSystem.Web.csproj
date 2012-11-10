@@ -51,6 +51,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Optimization">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
@@ -83,7 +84,8 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Manage.aspx" />
     <Content Include="Account\Register.aspx" />
-    <Content Include="Administrace\Default.aspx" />
+    <Content Include="Administrace\Poskytovatele.aspx" />
+    <Content Include="Administrace\Uzivatele.aspx" />
     <Content Include="App_Data\aspnet-RezervacniSystem-20121109165531.mdf" />
     <Content Include="App_Data\aspnet-RezervacniSystem-20121109165531_log.ldf">
       <DependentUpon>aspnet-RezervacniSystem-20121109165531.mdf</DependentUpon>
@@ -161,6 +163,7 @@
     <Content Include="Klient\Web.config" />
     <Content Include="Poskytovatel\Web.config" />
     <Content Include="Administrace\Web.config" />
+    <Content Include="Administrace\Administrace.master" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Poskytovatel\Default.aspx" />
     <Content Include="Scripts\jquery-1.7.1.js" />
@@ -199,12 +202,26 @@
     <Content Include="Bundle.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Administrace\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Administrace\Administrace.master.cs">
+      <DependentUpon>Administrace.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Administrace\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Administrace\Administrace.master.designer.cs">
+      <DependentUpon>Administrace.master</DependentUpon>
+    </Compile>
+    <Compile Include="Administrace\Poskytovatele.aspx.cs">
+      <DependentUpon>Poskytovatele.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrace\Poskytovatele.aspx.designer.cs">
+      <DependentUpon>Poskytovatele.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrace\Uzivatele.aspx.cs">
+      <DependentUpon>Uzivatele.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrace\Uzivatele.aspx.designer.cs">
+      <DependentUpon>Uzivatele.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Account\Login.aspx.cs">

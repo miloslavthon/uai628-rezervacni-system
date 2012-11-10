@@ -202,6 +202,32 @@ ul#menu {
             text-decoration: none;
         }
 
+		/* submenu
+----------------------------------------------------------*/
+ul#submenu {
+    font-size: 1em;
+    font-weight: 600;
+    margin: 0 0 5px;
+    padding: 0;
+    text-align: left;
+}
+
+    ul#submenu li {
+        display: inline;
+        list-style: none;
+        padding-left: 15px;
+    }
+
+        ul#submenu li a {
+            background: none;
+            color: #777;
+            text-decoration: none;
+        }
+
+        ul#submenu li a:hover {
+            color: #333;
+            text-decoration: none;
+        }
 
 /* page elements
 ----------------------------------------------------------*/
