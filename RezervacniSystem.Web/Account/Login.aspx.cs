@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -17,6 +18,14 @@ namespace RezervacniSystem.Web.Account
 			if (!String.IsNullOrEmpty(returnUrl))
 			{
 				RegisterHyperLink.NavigateUrl += "?ReturnUrl=" + returnUrl;
+			}
+		}
+
+		protected void login_LoggedIn(object sender, EventArgs e)
+		{
+			if (login.UserName == "admin" && !Roles.IsUserInRole("admin", "Administrator"))
+			{
+				Roles.AddUserToRole("admin", "Administrator");
 			}
 		}
 	}

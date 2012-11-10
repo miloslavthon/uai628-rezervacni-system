@@ -15,6 +15,13 @@ namespace RezervacniSystem.Web
 		{
 			// Code that runs on application startup
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+			if (!Roles.RoleExists("Administrator"))
+			{
+				Roles.CreateRole("Administrator");
+				Roles.CreateRole("Klient");
+				Roles.CreateRole("Poskytovatel");
+			}
 		}
 
 		void Application_End(object sender, EventArgs e)

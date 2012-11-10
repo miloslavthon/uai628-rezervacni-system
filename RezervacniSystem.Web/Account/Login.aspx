@@ -5,8 +5,8 @@
 		<h1><%: Title %>.</h1>
 	</hgroup>
 	<section id="loginForm">
-		<h2>Use a local account to log in.</h2>
-		<asp:Login runat="server" ViewStateMode="Disabled" RenderOuterTable="false">
+		<h2>Pro přihlášení zadejte Vaše přihlašovací údaje.</h2>
+		<asp:Login ID="login" runat="server" ViewStateMode="Disabled" RenderOuterTable="false" OnLoggedIn="login_LoggedIn">
 			<LayoutTemplate>
 				<p class="validation-summary-errors">
 					<asp:Literal runat="server" ID="FailureText" />
@@ -17,12 +17,12 @@
 						<li>
 							<asp:Label runat="server" AssociatedControlID="UserName">Uživatelské jméno</asp:Label>
 							<asp:TextBox runat="server" ID="UserName" />
-							<asp:RequiredFieldValidator runat="server" ControlToValidate="UserName" CssClass="field-validation-error" ErrorMessage="The user name field is required." />
+							<asp:RequiredFieldValidator runat="server" ControlToValidate="UserName" CssClass="field-validation-error" ErrorMessage="Uživatelské jméno musí být vyplněno." />
 						</li>
 						<li>
 							<asp:Label runat="server" AssociatedControlID="Password">Heslo</asp:Label>
 							<asp:TextBox runat="server" ID="Password" TextMode="Password" />
-							<asp:RequiredFieldValidator runat="server" ControlToValidate="Password" CssClass="field-validation-error" ErrorMessage="The password field is required." />
+							<asp:RequiredFieldValidator runat="server" ControlToValidate="Password" CssClass="field-validation-error" ErrorMessage="Heslo musí být vyplněno." />
 						</li>
 						<li>
 							<asp:CheckBox runat="server" ID="RememberMe" />
