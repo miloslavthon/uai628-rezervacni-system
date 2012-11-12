@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace RezervacniSystem.Web
 {
-	public partial class SiteMaster : MasterPage
+	public partial class SiteMaster : BaseMasterPage
 	{
 		private const string AntiXsrfTokenKey = "__AntiXsrfToken";
 		private const string AntiXsrfUserNameKey = "__AntiXsrfUserName";

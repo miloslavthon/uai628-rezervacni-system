@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace RezervacniSystem.Web.Administrace
 {
-	public partial class Administrace : System.Web.UI.MasterPage
+	public partial class Administrace : BaseMasterPage
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{

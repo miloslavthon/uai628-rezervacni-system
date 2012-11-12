@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace RezervacniSystem.Web.Administrace
 {
-	public partial class Poskytovatele : System.Web.UI.Page
+	public partial class Poskytovatele : BasePage
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
