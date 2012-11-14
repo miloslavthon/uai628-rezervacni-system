@@ -117,6 +117,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Administrace\Poskytovatele.aspx" />
     <Content Include="Administrace\Uzivatele.aspx" />
+    <EmbeddedResource Include="app-objects.xml" />
     <Content Include="App_Data\aspnet-RezervacniSystem-20121109165531.mdf" />
     <Content Include="App_Data\aspnet-RezervacniSystem-20121109165531_log.ldf">
       <DependentUpon>aspnet-RezervacniSystem-20121109165531.mdf</DependentUpon>
@@ -321,7 +322,20 @@
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\RezervacniSystem.Application\RezervacniSystem.Application.csproj">
+      <Project>{9f71f392-6e71-48c6-8a20-5cd82b4c3793}</Project>
+      <Name>RezervacniSystem.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RezervacniSystem.Data.NHibernate\RezervacniSystem.Data.NHibernate.csproj">
+      <Project>{44ad187d-3f8c-49ca-b291-439f49c74201}</Project>
+      <Name>RezervacniSystem.Data.NHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RezervacniSystem.Domain\RezervacniSystem.Domain.csproj">
+      <Project>{8cd0b966-5e3a-48da-933e-e6b92bb32f2b}</Project>
+      <Name>RezervacniSystem.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />
     <Content Include="Site.Master" />

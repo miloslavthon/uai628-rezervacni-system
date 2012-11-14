@@ -11,7 +11,9 @@ namespace RezervacniSystem.Web.Administrace
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-
+			//var repository = DefaultApplicationContext.GetObject<RezervacniSystem.Domain.Model.Poskytovatele.IPoskytovatelRepository>();
+			//repository.Uloz(new Domain.Model.Poskytovatele.Poskytovatel("Test"));
+			//var poskytovatele = repository.VratVse();
 		}
 	}
 }

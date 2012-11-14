@@ -2,3 +2,11 @@
 /*.suo
 /RezervacniSystem.Web/bin
 /RezervacniSystem.Web/obj
+/RezervacniSystem.Application/bin
+/RezervacniSystem.Application/obj
+/RezervacniSystem.Data.NHibernate/bin
+/RezervacniSystem.Data.NHibernate/obj
+/RezervacniSystem.Domain/bin
+/RezervacniSystem.Domain/obj
+/RezervacniSystem.Infrastructure/bin
+/RezervacniSystem.Infrastructure/obj
