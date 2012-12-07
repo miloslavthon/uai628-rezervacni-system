@@ -117,7 +117,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Administrace\Poskytovatele.aspx" />
     <Content Include="Administrace\Uzivatele.aspx" />
-    <EmbeddedResource Include="app-objects.xml" />
+    <EmbeddedResource Include="spring-app-objects.xml" />
     <Content Include="App_Data\aspnet-RezervacniSystem-20121109165531.mdf" />
     <Content Include="App_Data\aspnet-RezervacniSystem-20121109165531_log.ldf">
       <DependentUpon>aspnet-RezervacniSystem-20121109165531.mdf</DependentUpon>
@@ -234,6 +234,7 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <EmbeddedResource Include="spring-infrastructure-objects.xml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
