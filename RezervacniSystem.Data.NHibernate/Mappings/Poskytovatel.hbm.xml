@@ -8,6 +8,9 @@
 		<property name="Nazev">
 			<column name="Nazev" length="255" not-null="true" />
 		</property>
+		<property name="Login">
+			<column name="Login" length="255" />
+		</property>
 	</class>
 
 </hibernate-mapping>

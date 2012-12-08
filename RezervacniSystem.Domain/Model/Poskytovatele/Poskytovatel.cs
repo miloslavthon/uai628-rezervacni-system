@@ -22,5 +22,6 @@ namespace RezervacniSystem.Domain.Model.Poskytovatele
 		}
 
 		public virtual String Nazev { get; set; }
+		public virtual String Login { get; set; }
 	}
 }

@@ -498,6 +498,10 @@ fieldset {
     color: #e80c4d;
 }
 
+.strong {
+	font-weight: bold;
+}
+
 /* styles for validation helpers */
 .field-validation-error {
     color: #e80c4d;

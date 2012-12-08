@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace RezervacniSystem.Web.Account
 {
-	public partial class Login : Page
+	public partial class Login : BasePage
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
@@ -26,6 +26,16 @@ namespace RezervacniSystem.Web.Account
 			if (login.UserName == "admin" && !Roles.IsUserInRole("admin", "Administrator"))
 			{
 				Roles.AddUserToRole("admin", "Administrator");
+			}
+
+			bool existujePoskytovatelDleUzivatelskehoJmena = DefaultApplicationContext.GetObject<Domain.Model.Poskytovatele.IPoskytovatelRepository>().ExistujePoskytovatelDleUzivatelskehoJmena(login.UserName);
+			if (!Roles.IsUserInRole(login.UserName, "Poskytovatel") && existujePoskytovatelDleUzivatelskehoJmena)
+			{
+				Roles.AddUserToRole(login.UserName, "Poskytovatel");
+			}
+			else if (Roles.IsUserInRole(login.UserName, "Poskytovatel") && !existujePoskytovatelDleUzivatelskehoJmena)
+			{
+				Roles.RemoveUserFromRole(login.UserName, "Poskytovatel");
 			}
 		}
 	}

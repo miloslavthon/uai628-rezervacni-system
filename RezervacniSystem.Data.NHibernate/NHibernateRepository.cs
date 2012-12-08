@@ -20,19 +20,31 @@ namespace RezervacniSystem.Data.NHibernate
 			}
 		}
 
-		public T Vrat(int id)
+		public virtual T Vrat(int id)
 		{
 			return CurrentSession.Get<T>(id);
 		}
 
-		public IList<T> VratVse()
+		public virtual IList<T> VratVse()
 		{
 			return CurrentSession.QueryOver<T>().List<T>();
 		}
 
-		public void Uloz(T domainObject)
+		public virtual void Uloz(T domainObject)
 		{
 			CurrentSession.SaveOrUpdate(domainObject);
+			CurrentSession.Flush();
+		}
+
+		public virtual void Odstran(int id)
+		{
+			Odstran(Vrat(id));
+		}
+
+		public virtual void Odstran(T domainObject)
+		{
+			CurrentSession.Delete(domainObject);
+			CurrentSession.Flush();
 		}
 	}
 }

@@ -11,5 +11,95 @@ namespace RezervacniSystem.Web.Administrace {
     
     
     public partial class Poskytovatele {
+        
+        /// <summary>
+        /// lblNovyPoskytovatel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNovyPoskytovatel;
+        
+        /// <summary>
+        /// txtNazevPoskytovatele control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNazevPoskytovatele;
+        
+        /// <summary>
+        /// btnVytvoritPoskytovatele control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnVytvoritPoskytovatele;
+        
+        /// <summary>
+        /// lblChybaPriVytvoreniPoskytovatele control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblChybaPriVytvoreniPoskytovatele;
+        
+        /// <summary>
+        /// gvPoskytovatele control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvPoskytovatele;
+        
+        /// <summary>
+        /// lblVyberPoskytovatele control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblVyberPoskytovatele;
+        
+        /// <summary>
+        /// hdnIdPoskytovatele control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnIdPoskytovatele;
+        
+        /// <summary>
+        /// lblNazev control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNazev;
+        
+        /// <summary>
+        /// txtLoginPoskytovatele control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtLoginPoskytovatele;
+        
+        /// <summary>
+        /// btnUlozit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnUlozit;
     }
 }

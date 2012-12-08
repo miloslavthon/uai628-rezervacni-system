@@ -12,5 +12,7 @@ namespace RezervacniSystem.Domain.Model.Poskytovatele
 		IList<Poskytovatel> VratVse();
 		void Uloz(Poskytovatel poskytovatel);
 		IList<Poskytovatel> VratDleNazvu(String nazev);
+		bool ExistujePoskytovatelDleUzivatelskehoJmena(String login);
+		void Odstran(int id);
 	}
 }
