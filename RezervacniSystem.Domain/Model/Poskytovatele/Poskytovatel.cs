@@ -12,9 +12,11 @@ namespace RezervacniSystem.Domain.Model.Poskytovatele
 	{
 		public Poskytovatel()
 		{
+			this.TypRezervace = new TypRezervace();
 		}
 
 		public Poskytovatel(String nazev)
+			: this()
 		{
 			Validate.NotNullOrEmpty(nazev, "Pro vytvoření poskytovatele musí být zadán jeho název.");
 
@@ -23,5 +25,8 @@ namespace RezervacniSystem.Domain.Model.Poskytovatele
 
 		public virtual String Nazev { get; set; }
 		public virtual String Login { get; set; }
+		public virtual int MaximalniPocetZverejnenychUdalosti { get; set; }
+		public virtual int MaximalniPocetRezervaciJednohoKlienta { get; set; }
+		public virtual TypRezervace TypRezervace { get; set; }
 	}
 }

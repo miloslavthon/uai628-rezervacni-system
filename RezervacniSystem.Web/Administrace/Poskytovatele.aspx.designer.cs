@@ -13,6 +13,15 @@ namespace RezervacniSystem.Web.Administrace {
     public partial class Poskytovatele {
         
         /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        
+        /// <summary>
         /// lblNovyPoskytovatel control.
         /// </summary>
         /// <remarks>
@@ -58,13 +67,22 @@ namespace RezervacniSystem.Web.Administrace {
         protected global::System.Web.UI.WebControls.GridView gvPoskytovatele;
         
         /// <summary>
-        /// lblVyberPoskytovatele control.
+        /// pnlZadnyPoskytovatele control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblVyberPoskytovatele;
+        protected global::System.Web.UI.WebControls.Panel pnlZadnyPoskytovatele;
+        
+        /// <summary>
+        /// pnlDetailPoskytovatele control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlDetailPoskytovatele;
         
         /// <summary>
         /// hdnIdPoskytovatele control.
@@ -92,6 +110,78 @@ namespace RezervacniSystem.Web.Administrace {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtLoginPoskytovatele;
+        
+        /// <summary>
+        /// txtMaximalniPocetZverejnenychUdalosti control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMaximalniPocetZverejnenychUdalosti;
+        
+        /// <summary>
+        /// vldMaximalniPocetZverejnenychUdalosti control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator vldMaximalniPocetZverejnenychUdalosti;
+        
+        /// <summary>
+        /// vldMaximalniPocetZverejnenychUdalosti_Format control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator vldMaximalniPocetZverejnenychUdalosti_Format;
+        
+        /// <summary>
+        /// txtMaximalniPocetRezervaciJednohoKlienta control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMaximalniPocetRezervaciJednohoKlienta;
+        
+        /// <summary>
+        /// vldMaximalniPocetRezervaciJednohoKlienta control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator vldMaximalniPocetRezervaciJednohoKlienta;
+        
+        /// <summary>
+        /// vldMaximalniPocetRezervaciJednohoKlienta_Format control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator vldMaximalniPocetRezervaciJednohoKlienta_Format;
+        
+        /// <summary>
+        /// chkUdalostiProViceOsob control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkUdalostiProViceOsob;
+        
+        /// <summary>
+        /// chkUdalostiMajiOpakovanyTermin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkUdalostiMajiOpakovanyTermin;
         
         /// <summary>
         /// btnUlozit control.

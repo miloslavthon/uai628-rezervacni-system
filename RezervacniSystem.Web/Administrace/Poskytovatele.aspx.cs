@@ -29,18 +29,28 @@ namespace RezervacniSystem.Web.Administrace
 
 		private void ZobrazPoskytovatele(Domain.Model.Poskytovatele.Poskytovatel poskytovatel)
 		{
-			lblVyberPoskytovatele.Visible = poskytovatel == null;
+			pnlZadnyPoskytovatele.Visible = poskytovatel == null;
+			pnlDetailPoskytovatele.Visible = !pnlZadnyPoskytovatele.Visible;
+
 			if (poskytovatel == null)
 			{
 				hdnIdPoskytovatele.Value = null;
 				lblNazev.Text = null;
 				txtLoginPoskytovatele.Text = null;
+				txtMaximalniPocetZverejnenychUdalosti.Text = null;
+				txtMaximalniPocetRezervaciJednohoKlienta.Text = null;
+				chkUdalostiProViceOsob.Checked = false;
+				chkUdalostiMajiOpakovanyTermin.Checked = false;
 			}
 			else
 			{
 				hdnIdPoskytovatele.Value = poskytovatel.Id.ToString();
 				lblNazev.Text = poskytovatel.Nazev;
 				txtLoginPoskytovatele.Text = poskytovatel.Login;
+				txtMaximalniPocetZverejnenychUdalosti.Text = poskytovatel.MaximalniPocetZverejnenychUdalosti.ToString();
+				txtMaximalniPocetRezervaciJednohoKlienta.Text = poskytovatel.MaximalniPocetRezervaciJednohoKlienta.ToString();
+				chkUdalostiProViceOsob.Checked = poskytovatel.TypRezervace.UdalostiProViceOsob;
+				chkUdalostiMajiOpakovanyTermin.Checked = poskytovatel.TypRezervace.UdalostiMajiOpakovanyTermin;
 			}
 		}
 
@@ -67,7 +77,7 @@ namespace RezervacniSystem.Web.Administrace
 		protected void gvPoskytovatele_RowCommand(object sender, GridViewCommandEventArgs e)
 		{
 			int id = (int)gvPoskytovatele.DataKeys[int.Parse((String)e.CommandArgument)].Value;
-			if (e.CommandName == "Nastavit")
+			if (e.CommandName == "Vybrat")
 			{
 				Domain.Model.Poskytovatele.Poskytovatel poskytovatel = PoskytovatelRepository.Vrat(id);
 				ZobrazPoskytovatele(poskytovatel);
@@ -94,6 +104,10 @@ namespace RezervacniSystem.Web.Administrace
 
 			Domain.Model.Poskytovatele.Poskytovatel poskytovatel = PoskytovatelRepository.Vrat(id);
 			poskytovatel.Login = String.IsNullOrEmpty(txtLoginPoskytovatele.Text) ? null : txtLoginPoskytovatele.Text;
+			poskytovatel.MaximalniPocetZverejnenychUdalosti = String.IsNullOrEmpty(txtMaximalniPocetZverejnenychUdalosti.Text) ? 0 : int.Parse(txtMaximalniPocetZverejnenychUdalosti.Text);
+			poskytovatel.MaximalniPocetRezervaciJednohoKlienta = String.IsNullOrEmpty(txtMaximalniPocetRezervaciJednohoKlienta.Text) ? 0 : int.Parse(txtMaximalniPocetRezervaciJednohoKlienta.Text);
+			poskytovatel.TypRezervace.UdalostiProViceOsob = chkUdalostiProViceOsob.Checked;
+			poskytovatel.TypRezervace.UdalostiMajiOpakovanyTermin = chkUdalostiMajiOpakovanyTermin.Checked;
 
 			PoskytovatelRepository.Uloz(poskytovatel);
 			ZobrazPoskytovatele(poskytovatel);

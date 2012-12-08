@@ -38,6 +38,7 @@
   <ItemGroup>
     <Compile Include="Model\Poskytovatele\IPoskytovatelRepository.cs" />
     <Compile Include="Model\Poskytovatele\Poskytovatel.cs" />
+    <Compile Include="Model\Poskytovatele\TypRezervace.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\DomainObject.cs" />
   </ItemGroup>

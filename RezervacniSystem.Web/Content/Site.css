@@ -42,6 +42,12 @@ mark {
     padding-right: 5px;
 }
 
+hr {
+	border: 0;
+	background-color: darkgray;
+	height: 1px;
+}
+
 .float-left {
     float: left;
 }
