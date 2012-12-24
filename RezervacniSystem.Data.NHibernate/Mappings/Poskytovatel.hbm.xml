@@ -12,6 +12,7 @@
 		</property>
 		<property name="MaximalniPocetZverejnenychUdalosti" />
 		<property name="MaximalniPocetRezervaciJednohoKlienta" />
+		<property name="RegistraceKlientu" />
 		<component name="TypRezervace">
 			<property name="UdalostiProViceOsob" />
 			<property name="UdalostiMajiOpakovanyTermin" />

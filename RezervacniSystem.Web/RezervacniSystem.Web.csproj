@@ -202,6 +202,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Administrace\Administrace.master" />
+    <None Include="Properties\PublishProfiles\Lokální IIS.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Poskytovatel\Default.aspx" />
     <Content Include="Scripts\jquery-1.7.1.js" />
