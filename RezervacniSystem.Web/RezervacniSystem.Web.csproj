@@ -195,13 +195,19 @@
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
     <Content Include="Klient\Default.aspx" />
+    <Content Include="Klient\Prehled.aspx" />
+    <Content Include="Klient\VyhledavaniUdalosti.aspx" />
     <Content Include="packages.config" />
     <Content Include="Klient\Web.config" />
+    <Content Include="Poskytovatel\PrehledKlientu.aspx" />
+    <Content Include="Poskytovatel\Udalosti.aspx" />
     <Content Include="Poskytovatel\Web.config" />
     <Content Include="Administrace\Web.config">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Administrace\Administrace.master" />
+    <Content Include="Klient\Klient.master" />
+    <Content Include="Poskytovatel\Poskytovatel.master" />
     <None Include="Properties\PublishProfiles\Lokální IIS.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Poskytovatel\Default.aspx" />
@@ -308,12 +314,54 @@
     <Compile Include="Klient\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Klient\Klient.master.cs">
+      <DependentUpon>Klient.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Klient\Klient.master.designer.cs">
+      <DependentUpon>Klient.master</DependentUpon>
+    </Compile>
+    <Compile Include="Klient\Prehled.aspx.cs">
+      <DependentUpon>Prehled.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Klient\Prehled.aspx.designer.cs">
+      <DependentUpon>Prehled.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Klient\VyhledavaniUdalosti.aspx.cs">
+      <DependentUpon>VyhledavaniUdalosti.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Klient\VyhledavaniUdalosti.aspx.designer.cs">
+      <DependentUpon>VyhledavaniUdalosti.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Poskytovatel\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Poskytovatel\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Poskytovatel\Poskytovatel.master.cs">
+      <DependentUpon>Poskytovatel.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Poskytovatel\Poskytovatel.master.designer.cs">
+      <DependentUpon>Poskytovatel.master</DependentUpon>
+    </Compile>
+    <Compile Include="Poskytovatel\PrehledKlientu.aspx.cs">
+      <DependentUpon>PrehledKlientu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Poskytovatel\PrehledKlientu.aspx.designer.cs">
+      <DependentUpon>PrehledKlientu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Poskytovatel\Udalosti.aspx.cs">
+      <DependentUpon>Udalosti.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Poskytovatel\Udalosti.aspx.designer.cs">
+      <DependentUpon>Udalosti.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">

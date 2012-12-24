@@ -39,7 +39,7 @@ namespace RezervacniSystem.Web.Administrace
 				txtLoginPoskytovatele.Text = null;
 				txtMaximalniPocetZverejnenychUdalosti.Text = null;
 				txtMaximalniPocetRezervaciJednohoKlienta.Text = null;
-				chkRegistraceKlientu.Checked = false;
+				chkRegistraceKlientuPodlehaSchvaleni.Checked = false;
 				chkUdalostiProViceOsob.Checked = false;
 				chkUdalostiMajiOpakovanyTermin.Checked = false;
 			}
@@ -50,7 +50,7 @@ namespace RezervacniSystem.Web.Administrace
 				txtLoginPoskytovatele.Text = poskytovatel.Login;
 				txtMaximalniPocetZverejnenychUdalosti.Text = poskytovatel.MaximalniPocetZverejnenychUdalosti.ToString();
 				txtMaximalniPocetRezervaciJednohoKlienta.Text = poskytovatel.MaximalniPocetRezervaciJednohoKlienta.ToString();
-				chkRegistraceKlientu.Checked = poskytovatel.RegistraceKlientu;
+				chkRegistraceKlientuPodlehaSchvaleni.Checked = poskytovatel.RegistraceKlientuPodlehaSchvaleni;
 				chkUdalostiProViceOsob.Checked = poskytovatel.TypRezervace.UdalostiProViceOsob;
 				chkUdalostiMajiOpakovanyTermin.Checked = poskytovatel.TypRezervace.UdalostiMajiOpakovanyTermin;
 			}
@@ -108,7 +108,7 @@ namespace RezervacniSystem.Web.Administrace
 			poskytovatel.Login = String.IsNullOrEmpty(txtLoginPoskytovatele.Text) ? null : txtLoginPoskytovatele.Text;
 			poskytovatel.MaximalniPocetZverejnenychUdalosti = String.IsNullOrEmpty(txtMaximalniPocetZverejnenychUdalosti.Text) ? 0 : int.Parse(txtMaximalniPocetZverejnenychUdalosti.Text);
 			poskytovatel.MaximalniPocetRezervaciJednohoKlienta = String.IsNullOrEmpty(txtMaximalniPocetRezervaciJednohoKlienta.Text) ? 0 : int.Parse(txtMaximalniPocetRezervaciJednohoKlienta.Text);
-			poskytovatel.RegistraceKlientu = chkRegistraceKlientu.Checked;
+			poskytovatel.RegistraceKlientuPodlehaSchvaleni = chkRegistraceKlientuPodlehaSchvaleni.Checked;
 			poskytovatel.TypRezervace.UdalostiProViceOsob = chkUdalostiProViceOsob.Checked;
 			poskytovatel.TypRezervace.UdalostiMajiOpakovanyTermin = chkUdalostiMajiOpakovanyTermin.Checked;
 

@@ -42,7 +42,7 @@
 					<br />
 					Maximální počet rezervací jednoho klienta: <asp:TextBox ID="txtMaximalniPocetRezervaciJednohoKlienta" runat="server" /><asp:RequiredFieldValidator ID="vldMaximalniPocetRezervaciJednohoKlienta" runat="server" ErrorMessage="Údaj musí být vyplněn" ControlToValidate="txtMaximalniPocetRezervaciJednohoKlienta" Display="Dynamic" CssClass="message-error"></asp:RequiredFieldValidator><asp:RangeValidator ID="vldMaximalniPocetRezervaciJednohoKlienta_Format" runat="server" ErrorMessage="Zadejte hodnotu od 0 do 9999" ControlToValidate="txtMaximalniPocetRezervaciJednohoKlienta" MinimumValue="0" MaximumValue="9999" Type="Integer" Display="Dynamic" CssClass="message-error"></asp:RangeValidator>
 					<br />
-					Vyžadována registrace klientů: <asp:CheckBox ID="chkRegistraceKlientu" runat="server" />
+					Registrace klientů podléhá schválení: <asp:CheckBox ID="chkRegistraceKlientuPodlehaSchvaleni" runat="server" />
 					<br />
 					Události jsou určeny pro více osob: <asp:CheckBox ID="chkUdalostiProViceOsob" runat="server" />
 					<br />

@@ -27,7 +27,7 @@ namespace RezervacniSystem.Domain.Model.Poskytovatele
 		public virtual String Login { get; set; }
 		public virtual int MaximalniPocetZverejnenychUdalosti { get; set; }
 		public virtual int MaximalniPocetRezervaciJednohoKlienta { get; set; }
-		public virtual bool RegistraceKlientu { get; set; }
+		public virtual bool RegistraceKlientuPodlehaSchvaleni { get; set; }
 		public virtual TypRezervace TypRezervace { get; set; }
 	}
 }

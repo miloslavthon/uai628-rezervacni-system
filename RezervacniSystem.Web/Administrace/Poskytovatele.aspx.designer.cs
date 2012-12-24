@@ -166,13 +166,13 @@ namespace RezervacniSystem.Web.Administrace {
         protected global::System.Web.UI.WebControls.RangeValidator vldMaximalniPocetRezervaciJednohoKlienta_Format;
         
         /// <summary>
-        /// chkRegistraceKlientu control.
+        /// chkRegistraceKlientuPodlehaSchvaleni control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkRegistraceKlientu;
+        protected global::System.Web.UI.WebControls.CheckBox chkRegistraceKlientuPodlehaSchvaleni;
         
         /// <summary>
         /// chkUdalostiProViceOsob control.
