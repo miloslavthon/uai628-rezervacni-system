@@ -23,6 +23,8 @@
 						<asp:ButtonField Text="Vybrat" CommandName="Vybrat" />
 						<asp:ButtonField Text="Odstranit" CommandName="Odstranit" />
 					</Columns>
+					<AlternatingRowStyle BackColor="#e5e5e5" />
+					<SelectedRowStyle BackColor="#b8ddeb" />
 				</asp:GridView>
 			</section>
 

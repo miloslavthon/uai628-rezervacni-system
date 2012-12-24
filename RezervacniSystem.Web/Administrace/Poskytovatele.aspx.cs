@@ -23,6 +23,7 @@ namespace RezervacniSystem.Web.Administrace
 
 		private void ZobrazSeznamPoskytovatelu()
 		{
+			gvPoskytovatele.SelectedIndex = -1;
 			gvPoskytovatele.DataSource = PoskytovatelRepository.VratVse();
 			gvPoskytovatele.DataBind();
 		}
@@ -81,6 +82,7 @@ namespace RezervacniSystem.Web.Administrace
 			int id = (int)gvPoskytovatele.DataKeys[int.Parse((String)e.CommandArgument)].Value;
 			if (e.CommandName == "Vybrat")
 			{
+				gvPoskytovatele.SelectedIndex = int.Parse((String)e.CommandArgument);
 				Domain.Model.Poskytovatele.Poskytovatel poskytovatel = PoskytovatelRepository.Vrat(id);
 				ZobrazPoskytovatele(poskytovatel);
 			}
