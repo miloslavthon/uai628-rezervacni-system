@@ -18,7 +18,7 @@
 						<asp:BoundField HeaderText="Poskytovatel" DataField="Nazev" />
 						<asp:TemplateField>
 							<ItemTemplate>
-								<asp:Image ID="imgSchvaleniRegistrace" runat="server" ImageUrl="~/Images/klic.gif" ToolTip="Registrace u poskytovatele podléhá schrávelí" Visible="<%# ((RezervacniSystem.Domain.Model.Poskytovatele.Poskytovatel)Container.DataItem).RegistraceKlientuPodlehaSchvaleni %>" />
+								<asp:Image ID="imgSchvaleniRegistrace" runat="server" ImageUrl="~/Images/klic.gif" ToolTip="Registrace u poskytovatele podléhá schválení" Visible="<%# ((RezervacniSystem.Domain.Model.Poskytovatele.Poskytovatel)Container.DataItem).RegistraceKlientuPodlehaSchvaleni %>" />
 							</ItemTemplate>
 						</asp:TemplateField>
 						<asp:ButtonField Text="Zobrazit události" CommandName="ZobrazitUdalosti" />
