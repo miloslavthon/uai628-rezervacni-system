@@ -32,18 +32,14 @@
 
 			<section>
 				<label>Přehled událostí poskytovatele</label>
-				<asp:GridView ID="gvUdalosti" runat="server" DataKeyNames="Id" AutoGenerateColumns="false" OnRowCommand="gvPoskytovatele_RowCommand">
+				<asp:GridView ID="gvUdalosti" runat="server" DataKeyNames="Id" AutoGenerateColumns="false" OnRowCommand="gvUdalosti_RowCommand">
 					<EmptyDataRowStyle Font-Italic="true" />
 					<Columns>
-						<asp:BoundField HeaderText="Poskytovatel" DataField="Nazev" />
-						<asp:TemplateField>
-							<ItemTemplate>
-								<asp:Image ID="imgSchvaleniRegistrace" runat="server" ImageUrl="~/Images/klic.gif" ToolTip="Registrace u poskytovatele podléhá schrávelí" Visible="<%# ((RezervacniSystem.Domain.Model.Poskytovatele.Poskytovatel)Container.DataItem).RegistraceKlientuPodlehaSchvaleni %>" />
-							</ItemTemplate>
-						</asp:TemplateField>
-						<asp:ButtonField Text="Zobrazit události" CommandName="ZobrazitUdalosti" />
+						<asp:BoundField HeaderText="Název události" DataField="Nazev" ItemStyle-Width="20%" />
+						<asp:BoundField HeaderText="Popis události" DataField="Popis" ItemStyle-Width="80%" />
+						<asp:ButtonField Text="Zobrazit termíny" CommandName="ZobrazitTerminy" ControlStyle-Width="120px" />
 					</Columns>
-					<AlternatingRowStyle BackColor="LightGray" />
+					<AlternatingRowStyle BackColor="#e5e5e5" />
 				</asp:GridView>
 			</section>
 
