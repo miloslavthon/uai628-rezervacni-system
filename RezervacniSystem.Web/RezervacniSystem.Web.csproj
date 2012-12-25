@@ -372,6 +372,7 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
+    <Compile Include="SpravaUzivatelu.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RezervacniSystem.Application\RezervacniSystem.Application.csproj">

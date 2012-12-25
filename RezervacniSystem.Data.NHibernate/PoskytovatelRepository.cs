@@ -33,9 +33,9 @@ namespace RezervacniSystem.Data.NHibernate
 			//return query.List<Poskytovatel>();
 		}
 
-		public bool ExistujePoskytovatelDleUzivatelskehoJmena(String login)
+		public int VratIdPoskytovateleDleUzivatelskehoJmena(String login)
 		{
-			return CurrentSession.QueryOver<Poskytovatel>().Where(p => p.Login == login).RowCount() > 0;
+			return CurrentSession.QueryOver<Poskytovatel>().Where(p => p.Login == login).Select(p => p.Id).SingleOrDefault<int>();
 		}
 	}
 }

@@ -28,14 +28,19 @@ namespace RezervacniSystem.Web.Account
 				Roles.AddUserToRole("admin", "Administrator");
 			}
 
-			bool existujePoskytovatelDleUzivatelskehoJmena = DefaultApplicationContext.GetObject<Domain.Model.Poskytovatele.IPoskytovatelRepository>().ExistujePoskytovatelDleUzivatelskehoJmena(login.UserName);
-			if (!Roles.IsUserInRole(login.UserName, "Poskytovatel") && existujePoskytovatelDleUzivatelskehoJmena)
+			int idPoskytovatele = DefaultApplicationContext.GetObject<Domain.Model.Poskytovatele.IPoskytovatelRepository>().VratIdPoskytovateleDleUzivatelskehoJmena(login.UserName);
+			if (!Roles.IsUserInRole(login.UserName, "Poskytovatel") && idPoskytovatele != 0)
 			{
 				Roles.AddUserToRole(login.UserName, "Poskytovatel");
 			}
-			else if (Roles.IsUserInRole(login.UserName, "Poskytovatel") && !existujePoskytovatelDleUzivatelskehoJmena)
+			else if (Roles.IsUserInRole(login.UserName, "Poskytovatel") && idPoskytovatele == 0)
 			{
 				Roles.RemoveUserFromRole(login.UserName, "Poskytovatel");
+			}
+
+			if (idPoskytovatele != 0)
+			{
+				SpravaUzivatelu.IdPoskytovatele = idPoskytovatele;
 			}
 		}
 	}

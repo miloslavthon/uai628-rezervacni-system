@@ -48,6 +48,7 @@
     <Compile Include="NHibernateRepository.cs" />
     <Compile Include="PoskytovatelRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UdalostRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -60,6 +61,9 @@
       <Project>{8cd0b966-5e3a-48da-933e-e6b92bb32f2b}</Project>
       <Name>RezervacniSystem.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\Udalost.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

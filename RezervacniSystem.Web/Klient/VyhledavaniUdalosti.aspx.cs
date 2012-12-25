@@ -14,7 +14,10 @@ namespace RezervacniSystem.Web.Klient
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			NacistPoskytovatele(null);
+			if (!IsPostBack)
+			{
+				NacistPoskytovatele(null);
+			}
 		}
 
 		protected void btnHledatPoskytovatele_Click(object sender, EventArgs e)

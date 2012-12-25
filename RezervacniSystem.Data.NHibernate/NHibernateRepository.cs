@@ -46,5 +46,10 @@ namespace RezervacniSystem.Data.NHibernate
 			CurrentSession.Delete(domainObject);
 			CurrentSession.Flush();
 		}
+
+		public virtual void ReadLock(T domainObject)
+		{
+			CurrentSession.Lock(domainObject, LockMode.Read);
+		}
 	}
 }

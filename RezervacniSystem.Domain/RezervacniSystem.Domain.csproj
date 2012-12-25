@@ -39,6 +39,9 @@
     <Compile Include="Model\Poskytovatele\IPoskytovatelRepository.cs" />
     <Compile Include="Model\Poskytovatele\Poskytovatel.cs" />
     <Compile Include="Model\Poskytovatele\TypRezervace.cs" />
+    <Compile Include="Model\Udalosti\IUdalostRepository.cs" />
+    <Compile Include="Model\Udalosti\Udalost.cs" />
+    <Compile Include="Model\Udalosti\UdalostFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\DomainObject.cs" />
   </ItemGroup>

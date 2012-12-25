@@ -4,4 +4,13 @@
 		<property name="SessionFactory" ref="DataSessionFactory" />
 	</object>
 	<object id="PoskytovatelRepository" parent="Repository" type="RezervacniSystem.Data.NHibernate.PoskytovatelRepository, RezervacniSystem.Data.NHibernate" />
+	<object id="UdalostRepository" parent="Repository" type="RezervacniSystem.Data.NHibernate.UdalostRepository, RezervacniSystem.Data.NHibernate" />
+	<object id="UdalostFactory" type="RezervacniSystem.Domain.Model.Udalosti.UdalostFactory, RezervacniSystem.Domain">
+		<constructor-arg ref="PoskytovatelRepository" />
+	</object>
+	<object id="SpravaUdalostiService" type="RezervacniSystem.Application.Impl.SpravaUdalostiService, RezervacniSystem.Application">
+		<constructor-arg ref="UdalostRepository" />
+		<constructor-arg ref="PoskytovatelRepository" />
+		<constructor-arg ref="UdalostFactory" />
+	</object>
 </objects>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="RezervacniSystem.Domain.Model.Udalosti" assembly="RezervacniSystem.Domain">
+
+	<class name="Udalost" table="Udalost">
+		<id name="Id" type="Int32" column="Id" unsaved-value="0" generator="native" />
+
+		<many-to-one name="Poskytovatel" column="IdPoskytovatele" />
+		<property name="Nazev">
+			<column name="Nazev" length="255" not-null="true" />
+		</property>
+		<property name="MaximalniPocetUcastniku" />
+		<property name="OpakovanyTermin" />
+		<property name="Zverejneno" />
+		<property name="Popis" />
+	</class>
+
+</hibernate-mapping>
