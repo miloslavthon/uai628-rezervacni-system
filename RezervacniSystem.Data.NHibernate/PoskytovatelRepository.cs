@@ -11,7 +11,7 @@ namespace RezervacniSystem.Data.NHibernate
 	{
 		public override void Uloz(Poskytovatel domainObject)
 		{
-			if (!CurrentSession.Contains(domainObject) && CurrentSession.QueryOver<Poskytovatel>().Where(p => p.Nazev == domainObject.Nazev).RowCount() > 0)
+			if (!CurrentSession.Contains(domainObject) && Query.Where(p => p.Nazev == domainObject.Nazev).RowCount() > 0)
 			{
 				throw new ArgumentException("Poskytovatel s názvem " + domainObject.Nazev + " již existuje.");
 			}
@@ -21,12 +21,12 @@ namespace RezervacniSystem.Data.NHibernate
 
 		public override IList<Poskytovatel> VratVse()
 		{
-			return CurrentSession.QueryOver<Poskytovatel>().OrderBy(p => p.Nazev).Asc.List();
+			return Query.OrderBy(p => p.Nazev).Asc.List();
 		}
 
 		public IList<Poskytovatel> VratDleNazvu(String nazev)
 		{
-			return CurrentSession.QueryOver<Poskytovatel>().WhereRestrictionOn(p => p.Nazev).IsLike(nazev + "%").List();
+			return Query.WhereRestrictionOn(p => p.Nazev).IsLike(nazev + "%").List();
 
 			//var query = CurrentSession.CreateQuery("from Poskytovatel p where p.Nazev like :n");
 			//query.SetString("n", nazev + "%");
@@ -35,7 +35,7 @@ namespace RezervacniSystem.Data.NHibernate
 
 		public int VratIdPoskytovateleDleUzivatelskehoJmena(String login)
 		{
-			return CurrentSession.QueryOver<Poskytovatel>().Where(p => p.Login == login).Select(p => p.Id).SingleOrDefault<int>();
+			return Query.Where(p => p.Login == login).Select(p => p.Id).SingleOrDefault<int>();
 		}
 	}
 }

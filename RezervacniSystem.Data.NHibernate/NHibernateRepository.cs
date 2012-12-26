@@ -51,5 +51,13 @@ namespace RezervacniSystem.Data.NHibernate
 		{
 			CurrentSession.Lock(domainObject, LockMode.Upgrade);
 		}
+
+		protected IQueryOver<T, T> Query
+		{
+			get
+			{
+				return CurrentSession.QueryOver<T>();
+			}
+		}
 	}
 }
