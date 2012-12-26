@@ -69,7 +69,7 @@ namespace RezervacniSystem.Web.Klient
 		private void NacistUdalostiPoskytovatele(int idPoskytovatele)
 		{
 			gvUdalosti.EmptyDataText = "Nejsou k dispozici žádné události pro vybraného poskytovatele.";
-			gvUdalosti.DataSource = UdalostRepository.VratUdalostiDlePoskytovatele(idPoskytovatele);
+			gvUdalosti.DataSource = UdalostRepository.VratZverejneneUdalostiDlePoskytovatele(idPoskytovatele);
 			gvUdalosti.DataBind();
 		}
 	}

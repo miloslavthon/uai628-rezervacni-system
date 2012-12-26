@@ -11,6 +11,7 @@ namespace RezervacniSystem.Domain.Model.Udalosti
 		Udalost Vrat(int id);
 		void Uloz(Udalost udalost);
 		IList<Udalost> VratUdalostiDlePoskytovatele(int idPoskytovatele);
+		IList<Udalost> VratZverejneneUdalostiDlePoskytovatele(int idPoskytovatele);
 		int VratPocetZverejnenychUdalosti(int idPoskytovatele);
 	}
 }
