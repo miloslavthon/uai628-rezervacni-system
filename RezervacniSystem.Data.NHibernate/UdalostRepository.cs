@@ -16,7 +16,7 @@ namespace RezervacniSystem.Data.NHibernate
 
 		public int VratPocetZverejnenychUdalosti(int idPoskytovatele)
 		{
-			return CurrentSession.QueryOver<Udalost>().Where(u => u.Poskytovatel.Id.Equals(idPoskytovatele) && u.Zverejneno).RowCount();
+			return CurrentSession.QueryOver<Udalost>().Where(u => u.Poskytovatel.Id == idPoskytovatele && u.Zverejneno).RowCount();
 		}
 	}
 }

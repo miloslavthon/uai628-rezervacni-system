@@ -15,5 +15,11 @@ namespace RezervacniSystem.Web
 			get;
 			set;
 		}
+
+		protected void GoToErrorPage(String message)
+		{
+			Context.Items["ErrorMessage"] = message;
+			Server.Transfer("~/ErrorPage.aspx");
+		}
 	}
 }

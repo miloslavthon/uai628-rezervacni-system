@@ -21,8 +21,6 @@ namespace RezervacniSystem.Domain.Model.Udalosti
 		{
 			Poskytovatel poskytovatel = poskytovatelRepository.Vrat(idPoskytovatele);
 			Udalost udalost = new Udalost(poskytovatel, nazev);
-			udalost.OpakovanyTermin = poskytovatel.TypRezervace.UdalostiMajiOpakovanyTermin;
-			udalost.MaximalniPocetUcastniku = poskytovatel.TypRezervace.UdalostiProViceOsob ? 0 : 1;
 			return udalost;
 		}
 	}

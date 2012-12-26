@@ -47,9 +47,9 @@ namespace RezervacniSystem.Data.NHibernate
 			CurrentSession.Flush();
 		}
 
-		public virtual void ReadLock(T domainObject)
+		public virtual void Lock(T domainObject)
 		{
-			CurrentSession.Lock(domainObject, LockMode.Read);
+			CurrentSession.Lock(domainObject, LockMode.Upgrade);
 		}
 	}
 }

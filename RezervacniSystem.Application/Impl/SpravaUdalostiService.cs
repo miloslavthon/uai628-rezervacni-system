@@ -36,16 +36,16 @@ namespace RezervacniSystem.Application.Impl
 			Udalost udalost = udalostRepository.Vrat(idUdalosti);
 			if (!udalost.Zverejneno && zverejneno)
 			{
-				poskytovatelRepository.ReadLock(udalost.Poskytovatel);
+				poskytovatelRepository.Lock(udalost.Poskytovatel);
 				int pocetUdalosti = udalostRepository.VratPocetZverejnenychUdalosti(udalost.Poskytovatel.Id);
-				if (pocetUdalosti > udalost.Poskytovatel.MaximalniPocetZverejnenychUdalosti)
+				if (pocetUdalosti >= udalost.Poskytovatel.MaximalniPocetZverejnenychUdalosti)
 				{
 					throw new ArgumentException("Byl překročen maximální počet zveřejněných událostí.");
 				}
 			}
 
 			udalost.Nazev = nazev;
-			udalost.MaximalniPocetUcastniku = maximalniPocetUcastniku;
+			udalost.NastavMaximalniPocetUcastniku(maximalniPocetUcastniku);
 			udalost.Zverejneno = zverejneno;
 			udalost.Popis = popis;
 

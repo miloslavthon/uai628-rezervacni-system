@@ -22,6 +22,8 @@ namespace RezervacniSystem.Domain.Model.Udalosti
 
 			this.Poskytovatel = poskytovatel;
 			this.Nazev = nazev;
+			this.OpakovanyTermin = poskytovatel.TypRezervace.UdalostiMajiOpakovanyTermin;
+			this.MaximalniPocetUcastniku = poskytovatel.TypRezervace.UdalostiProViceOsob ? 0 : 1;
 		}
 
 		public virtual Poskytovatel Poskytovatel { get; set; }
@@ -33,5 +35,10 @@ namespace RezervacniSystem.Domain.Model.Udalosti
 		public virtual bool OpakovanyTermin { get; set; }
 		public virtual bool Zverejneno { get; set; }
 		public virtual String Popis { get; set; }
+
+		public virtual void NastavMaximalniPocetUcastniku(int hodnota)
+		{
+			MaximalniPocetUcastniku = Poskytovatel.TypRezervace.UdalostiProViceOsob ? hodnota : 1;
+		}
 	}
 }

@@ -14,6 +14,6 @@ namespace RezervacniSystem.Domain.Model.Poskytovatele
 		IList<Poskytovatel> VratDleNazvu(String nazev);
 		int VratIdPoskytovateleDleUzivatelskehoJmena(String login);
 		void Odstran(int id);
-		void ReadLock(Poskytovatel poskytovatel);
+		void Lock(Poskytovatel poskytovatel);
 	}
 }
