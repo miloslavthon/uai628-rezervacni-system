@@ -39,6 +39,17 @@
     <Compile Include="Model\Poskytovatele\IPoskytovatelRepository.cs" />
     <Compile Include="Model\Poskytovatele\Poskytovatel.cs" />
     <Compile Include="Model\Poskytovatele\TypRezervace.cs" />
+    <Compile Include="Model\Terminy\CasTrvani.cs" />
+    <Compile Include="Model\Terminy\DateTimeExt.cs" />
+    <Compile Include="Model\Terminy\DenVTydnu.cs" />
+    <Compile Include="Model\Terminy\DenVTydnuPopis.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DenVTydnuPopis.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Terminy\ITerminUdalostiRepository.cs" />
+    <Compile Include="Model\Terminy\TerminUdalosti.cs" />
+    <Compile Include="Model\Terminy\TypTerminu.cs" />
     <Compile Include="Model\Udalosti\IUdalostRepository.cs" />
     <Compile Include="Model\Udalosti\Udalost.cs" />
     <Compile Include="Model\Udalosti\UdalostFactory.cs" />
@@ -50,6 +61,12 @@
       <Project>{3f02aaac-12c1-4c6b-8710-4b9125a79761}</Project>
       <Name>RezervacniSystem.Infrastructure</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Terminy\DenVTydnuPopis.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DenVTydnuPopis.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -13,4 +13,9 @@
 		<constructor-arg ref="PoskytovatelRepository" />
 		<constructor-arg ref="UdalostFactory" />
 	</object>
+	<object id="TerminUdalostiRepository" parent="Repository" type="RezervacniSystem.Data.NHibernate.TerminUdalostiRepository, RezervacniSystem.Data.NHibernate" />
+	<object id="SpravaTerminuService" type="RezervacniSystem.Application.Impl.SpravaTerminuService, RezervacniSystem.Application">
+		<constructor-arg ref="UdalostRepository" />
+		<constructor-arg ref="TerminUdalostiRepository" />
+	</object>
 </objects>

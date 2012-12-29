@@ -130,13 +130,157 @@ namespace RezervacniSystem.Web.Poskytovatel {
         protected global::System.Web.UI.WebControls.Button btnZrusitUdalost;
         
         /// <summary>
-        /// lblChyba control.
+        /// lblChybaPriUkladaniUdalosti control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblChyba;
+        protected global::System.Web.UI.WebControls.Label lblChybaPriUkladaniUdalosti;
+        
+        /// <summary>
+        /// mvTermin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.MultiView mvTermin;
+        
+        /// <summary>
+        /// viewJednorazovyTermin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.View viewJednorazovyTermin;
+        
+        /// <summary>
+        /// txtTermin_Datum control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTermin_Datum;
+        
+        /// <summary>
+        /// viewOpakovanyTermin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.View viewOpakovanyTermin;
+        
+        /// <summary>
+        /// cmbDen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList cmbDen;
+        
+        /// <summary>
+        /// txtTermin_Cas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTermin_Cas;
+        
+        /// <summary>
+        /// spanPlatnyDo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spanPlatnyDo;
+        
+        /// <summary>
+        /// txtPlatnyDo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPlatnyDo;
+        
+        /// <summary>
+        /// txtDobaTrvani_Hodiny control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDobaTrvani_Hodiny;
+        
+        /// <summary>
+        /// txtDobaTrvani_Minuty control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDobaTrvani_Minuty;
+        
+        /// <summary>
+        /// txtUzaverkaRezervaci_Dny control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtUzaverkaRezervaci_Dny;
+        
+        /// <summary>
+        /// txtUzaverkaRezervaci_Hodiny control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtUzaverkaRezervaci_Hodiny;
+        
+        /// <summary>
+        /// txtUzaverkaRezervaci_Minuty control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtUzaverkaRezervaci_Minuty;
+        
+        /// <summary>
+        /// txtPoznamka control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPoznamka;
+        
+        /// <summary>
+        /// btnZverejnitNovyTermin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnZverejnitNovyTermin;
+        
+        /// <summary>
+        /// lblChybaPriZverejneniTerminu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblChybaPriZverejneniTerminu;
         
         /// <summary>
         /// gvTerminy control.

@@ -25,6 +25,11 @@ namespace RezervacniSystem.Data.NHibernate
 			return CurrentSession.Get<T>(id);
 		}
 
+		public virtual T VratProUpravy(int id)
+		{
+			return CurrentSession.Get<T>(id, LockMode.Upgrade);
+		}
+
 		public virtual IList<T> VratVse()
 		{
 			return CurrentSession.QueryOver<T>().List<T>();

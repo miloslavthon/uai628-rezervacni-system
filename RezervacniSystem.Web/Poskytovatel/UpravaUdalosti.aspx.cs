@@ -1,9 +1,12 @@
 ﻿using Common.Logging;
 using RezervacniSystem.Application;
+using RezervacniSystem.Domain.Model.Terminy;
 using RezervacniSystem.Domain.Model.Udalosti;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -15,11 +18,14 @@ namespace RezervacniSystem.Web.Poskytovatel
 		private static readonly ILog log = LogManager.GetLogger(typeof(UpravaUdalosti));
 
 		public IUdalostRepository UdalostRepository { get; set; }
+		public ITerminUdalostiRepository TerminUdalostiRepository { get; set; }
 		public ISpravaUdalostiService SpravaUdalostiService { get; set; }
+		public ISpravaTerminuService SpravaTerminuService { get; set; }
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			lblChyba.Visible = false;
+			lblChybaPriUkladaniUdalosti.Visible = false;
+			lblChybaPriZverejneniTerminu.Visible = false;
 
 			if (!IsPostBack)
 			{
@@ -54,15 +60,15 @@ namespace RezervacniSystem.Web.Poskytovatel
 			}
 			catch (ArgumentException ex)
 			{
-				lblChyba.Text = ex.Message;
-				lblChyba.Visible = true;
+				lblChybaPriUkladaniUdalosti.Text = ex.Message;
+				lblChybaPriUkladaniUdalosti.Visible = true;
 
 				log.Warn("Při ukládání události došlo k chybě.", ex);
 			}
 			catch (Exception ex)
 			{
-				lblChyba.Text = "Při provádění změny došlo k neočekávané chybě.";
-				lblChyba.Visible = true;
+				lblChybaPriUkladaniUdalosti.Text = "Při provádění změny došlo k neočekávané chybě.";
+				lblChybaPriUkladaniUdalosti.Visible = true;
 
 				log.Error("Při ukládání události došlo k chybě.", ex);
 			}
@@ -76,13 +82,63 @@ namespace RezervacniSystem.Web.Poskytovatel
 			}
 			catch (ArgumentException ex)
 			{
-				lblChyba.Text = ex.Message;
-				lblChyba.Visible = true;
+				lblChybaPriUkladaniUdalosti.Text = ex.Message;
+				lblChybaPriUkladaniUdalosti.Visible = true;
+
+				log.Warn("Při zrušení události došlo k chybě.", ex);
 			}
-			catch
+			catch (Exception ex)
 			{
-				lblChyba.Text = "Při provádění změny došlo k neočekávané chybě.";
-				lblChyba.Visible = true;
+				lblChybaPriUkladaniUdalosti.Text = "Při provádění změny došlo k neočekávané chybě.";
+				lblChybaPriUkladaniUdalosti.Visible = true;
+
+				log.Error("Při zrušení události došlo k chybě.", ex);
+			}
+		}
+
+		protected void btnZverejnitNovyTermin_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				int idUdalosti = int.Parse(Request["Id"]);
+
+				if (mvTermin.GetActiveView().Equals(viewJednorazovyTermin))
+				{
+					SpravaTerminuService.ZverejnitJednorazovyTermin(
+						idUdalosti,
+						DateTime.Parse(txtTermin_Datum.Text),
+						TimeSpan.Parse(txtTermin_Cas.Text),
+						new TimeSpan(int.Parse(txtDobaTrvani_Hodiny.Text), int.Parse(txtDobaTrvani_Minuty.Text), 0),
+						new TimeSpan(int.Parse(txtUzaverkaRezervaci_Dny.Text), int.Parse(txtUzaverkaRezervaci_Hodiny.Text), int.Parse(txtUzaverkaRezervaci_Minuty.Text), 0),
+						txtPoznamka.Text == String.Empty ? null : txtPoznamka.Text);
+				}
+				else
+				{
+					SpravaTerminuService.ZverejnitOpakovanyTermin(
+						idUdalosti,
+						(DenVTydnu)Enum.Parse(typeof(DenVTydnu), cmbDen.SelectedValue),
+						TimeSpan.Parse(txtTermin_Cas.Text),
+						DateTime.Parse(txtPlatnyDo.Text),
+						new TimeSpan(int.Parse(txtDobaTrvani_Hodiny.Text), int.Parse(txtDobaTrvani_Minuty.Text), 0),
+						new TimeSpan(int.Parse(txtUzaverkaRezervaci_Dny.Text), int.Parse(txtUzaverkaRezervaci_Hodiny.Text), int.Parse(txtUzaverkaRezervaci_Minuty.Text), 0),
+						txtPoznamka.Text == String.Empty ? null : txtPoznamka.Text);
+				}
+
+				NactiTerminyUdalosti(idUdalosti);
+			}
+			catch (ArgumentException ex)
+			{
+				lblChybaPriZverejneniTerminu.Text = ex.Message;
+				lblChybaPriZverejneniTerminu.Visible = true;
+
+				log.Warn("Při zveřejnění termínu došlo k chybě.", ex);
+			}
+			catch (Exception ex)
+			{
+				lblChybaPriZverejneniTerminu.Text = "Při provádění změny došlo k neočekávané chybě.";
+				lblChybaPriZverejneniTerminu.Visible = true;
+
+				log.Warn("Při zveřejnění termínu došlo k chybě.", ex);
 			}
 		}
 
@@ -90,6 +146,7 @@ namespace RezervacniSystem.Web.Poskytovatel
 		{
 			if (e.CommandName == "Zrusit")
 			{
+				int idTerminu = (int)gvTerminy.DataKeys[int.Parse((String)e.CommandArgument)].Value;
 
 			}
 		}
@@ -107,13 +164,53 @@ namespace RezervacniSystem.Web.Poskytovatel
 				txtMaximalniPocetUcastniku.Enabled = false;
 			}
 
-			gvTerminy.DataSource = new List<Object>()
-			{
-				new { Id = 1, Zacatek = DateTime.Now, Konec = DateTime.Now.AddDays(1), UzaverkaRezervaci = DateTime.Now.AddDays(-1), Poznamka = "Poznámka k termínu 1" },
-				new { Id = 2, Zacatek = DateTime.Now, Konec = DateTime.Now.AddDays(1), UzaverkaRezervaci = DateTime.Now.AddDays(-1), Poznamka = "Poznámka k termínu 2" },
-				new { Id = 3, Zacatek = DateTime.Now, Konec = DateTime.Now.AddDays(1), UzaverkaRezervaci = DateTime.Now.AddDays(-1), Poznamka = "Poznámka k termínu 3" }
-			};
+			mvTermin.SetActiveView(udalost.OpakovanyTermin ? viewOpakovanyTermin : viewJednorazovyTermin);
+			spanPlatnyDo.Visible = udalost.OpakovanyTermin;
+
+			NactiTerminyUdalosti(udalost.Id);
+		}
+
+		private void NactiTerminyUdalosti(int idUdalosti)
+		{
+			gvTerminy.DataSource = UpravTerminyProZobrazeni(TerminUdalostiRepository.VratTerminyDleUdalosti(idUdalosti));
 			gvTerminy.DataBind();
+		}
+
+		private static IEnumerable UpravTerminyProZobrazeni(IList<TerminUdalosti> terminy)
+		{
+			foreach (TerminUdalosti t in terminy)
+			{
+				yield return new
+				{
+					Id = t.Id,
+					Termin = t.Typ == TypTerminu.JEDNORAZOVY ?
+						t.Datum.Value.ToString("d") + " " + t.CasTrvani.Cas.ToString(@"hh\:mm") :
+						DenVTydnuPopis.ResourceManager.GetString(t.Den.Value.ToString()) + " " + t.CasTrvani.Cas.ToString(@"hh\:mm") + ", do " + t.PlatnyDo.Value.ToString("d"),
+					DobaTrvani = VypisDobu(t.CasTrvani.DobaTrvani),
+					UzaverkaRezervaci = VypisDobu(t.UzaverkaRezervaci),
+					Poznamka = t.Poznamka
+				};
+			}
+		}
+
+		private static String VypisDobu(TimeSpan timeSpan)
+		{
+			StringBuilder sb = new StringBuilder();
+
+			if (timeSpan.Days > 0)
+			{
+				sb.Append(timeSpan.Days).Append(" d. ");
+			}
+			if (timeSpan.Hours > 0)
+			{
+				sb.Append(timeSpan.Hours).Append(" hod. ");
+			}
+			if (timeSpan.Minutes > 0)
+			{
+				sb.Append(timeSpan.Minutes).Append(" min. ");
+			}
+
+			return sb.ToString().TrimEnd();
 		}
 	}
 }
