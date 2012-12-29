@@ -23,5 +23,12 @@ namespace RezervacniSystem.Data.NHibernate
 		{
 			return Query.Where(u => u.Poskytovatel.Id == idPoskytovatele && u.Zverejneno).RowCount();
 		}
+
+		public void OdstranVsechnyUdalostiPoskytovatele(int idPoskytovatele)
+		{
+			CurrentSession.CreateQuery("delete Udalost u where u.Poskytovatel.Id = :id")
+				.SetParameter("id", idPoskytovatele)
+				.ExecuteUpdate();
+		}
 	}
 }

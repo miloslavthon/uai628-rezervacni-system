@@ -11,5 +11,6 @@ namespace RezervacniSystem.Application
 	{
 		Udalost ZalozitNovouUdalost(int idPoskytovatele, String nazev);
 		void ZmenitUdalost(int idUdalosti, String nazev, int maximalniPocetUcastniku, bool zverejneno, String popis);
+		void ZrusitUdalost(int idUdalosti);
 	}
 }

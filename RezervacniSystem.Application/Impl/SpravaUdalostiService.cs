@@ -1,4 +1,5 @@
 ﻿using RezervacniSystem.Domain.Model.Poskytovatele;
+using RezervacniSystem.Domain.Model.Terminy;
 using RezervacniSystem.Domain.Model.Udalosti;
 using Spring.Transaction.Interceptor;
 using System;
@@ -13,12 +14,14 @@ namespace RezervacniSystem.Application.Impl
 	{
 		private readonly IUdalostRepository udalostRepository;
 		private readonly IPoskytovatelRepository poskytovatelRepository;
+		private readonly ITerminUdalostiRepository terminUdalostiRepository;
 		private readonly UdalostFactory udalostFactory;
 
-		public SpravaUdalostiService(IUdalostRepository udalostRepository, IPoskytovatelRepository poskytovatelRepository, UdalostFactory udalostFactory)
+		public SpravaUdalostiService(IUdalostRepository udalostRepository, IPoskytovatelRepository poskytovatelRepository, ITerminUdalostiRepository terminUdalostiRepository, UdalostFactory udalostFactory)
 		{
 			this.udalostRepository = udalostRepository;
 			this.poskytovatelRepository = poskytovatelRepository;
+			this.terminUdalostiRepository = terminUdalostiRepository;
 			this.udalostFactory = udalostFactory;
 		}
 
@@ -50,6 +53,15 @@ namespace RezervacniSystem.Application.Impl
 			udalost.Popis = popis;
 
 			udalostRepository.Uloz(udalost);
+		}
+
+		[Transaction]
+		public void ZrusitUdalost(int idUdalosti)
+		{
+			// doplnit zrušení případných rezervací
+
+			terminUdalostiRepository.OdstranVsechnyTerminyUdalosti(idUdalosti);
+			udalostRepository.Odstran(idUdalosti);
 		}
 	}
 }

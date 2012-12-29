@@ -14,5 +14,7 @@ namespace RezervacniSystem.Domain.Model.Udalosti
 		IList<Udalost> VratUdalostiDlePoskytovatele(int idPoskytovatele);
 		IList<Udalost> VratZverejneneUdalostiDlePoskytovatele(int idPoskytovatele);
 		int VratPocetZverejnenychUdalosti(int idPoskytovatele);
+		void Odstran(int id);
+		void OdstranVsechnyUdalostiPoskytovatele(int idPoskytovatele);
 	}
 }

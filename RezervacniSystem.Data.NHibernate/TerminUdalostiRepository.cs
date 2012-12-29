@@ -23,5 +23,19 @@ namespace RezervacniSystem.Data.NHibernate
 				(t.Typ == TypTerminu.JEDNORAZOVY && t.Datum > datum || t.Typ == TypTerminu.OPAKOVANY && t.PlatnyDo > datum)
 			).List();
 		}
+
+		public void OdstranVsechnyTerminyUdalosti(int idUdalosti)
+		{
+			CurrentSession.CreateQuery("delete TerminUdalosti t where t.Udalost.Id = :id")
+				.SetParameter("id", idUdalosti)
+				.ExecuteUpdate();
+		}
+
+		public void OdstranVsechnyTerminyUdalostiProPoskytovatele(int idPoskytovatele)
+		{
+			CurrentSession.CreateQuery("delete TerminUdalosti t where t.Udalost.Id in (select u.Id from Udalost u where u.Poskytovatel.Id = :id)")
+				.SetParameter("id", idPoskytovatele)
+				.ExecuteUpdate();
+		}
 	}
 }

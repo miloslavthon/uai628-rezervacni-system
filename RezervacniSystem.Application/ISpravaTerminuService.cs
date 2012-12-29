@@ -11,5 +11,6 @@ namespace RezervacniSystem.Application
 	{
 		TerminUdalosti ZverejnitJednorazovyTermin(int idUdalosti, DateTime datum, TimeSpan cas, TimeSpan dobaTrvani, TimeSpan uzaverkaRezervaci, String poznamka);
 		TerminUdalosti ZverejnitOpakovanyTermin(int idUdalosti, DenVTydnu den, TimeSpan cas, DateTime platnyDo, TimeSpan dobaTrvani, TimeSpan uzaverkaRezervaci, String poznamka);
+		void ZrusitTermin(int idTerminu);
 	}
 }

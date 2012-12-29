@@ -1,4 +1,5 @@
-﻿using RezervacniSystem.Domain.Model.Poskytovatele;
+﻿using RezervacniSystem.Application;
+using RezervacniSystem.Domain.Model.Poskytovatele;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace RezervacniSystem.Web.Administrace
 	public partial class Poskytovatele : BasePage
 	{
 		protected IPoskytovatelRepository PoskytovatelRepository { get; set; }
+		protected ISpravaPoskytovateluService SpravaPoskytovateluService { get; set; }
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
@@ -111,8 +113,8 @@ namespace RezervacniSystem.Web.Administrace
 
 			Domain.Model.Poskytovatele.Poskytovatel poskytovatel = PoskytovatelRepository.Vrat(id);
 			poskytovatel.Login = String.IsNullOrEmpty(txtLoginPoskytovatele.Text) ? null : txtLoginPoskytovatele.Text;
-			poskytovatel.MaximalniPocetZverejnenychUdalosti = String.IsNullOrEmpty(txtMaximalniPocetZverejnenychUdalosti.Text) ? 0 : int.Parse(txtMaximalniPocetZverejnenychUdalosti.Text);
-			poskytovatel.MaximalniPocetRezervaciJednohoKlienta = String.IsNullOrEmpty(txtMaximalniPocetRezervaciJednohoKlienta.Text) ? 0 : int.Parse(txtMaximalniPocetRezervaciJednohoKlienta.Text);
+			poskytovatel.MaximalniPocetZverejnenychUdalosti = String.IsNullOrEmpty(txtMaximalniPocetZverejnenychUdalosti.Text) ? 1 : int.Parse(txtMaximalniPocetZverejnenychUdalosti.Text);
+			poskytovatel.MaximalniPocetRezervaciJednohoKlienta = String.IsNullOrEmpty(txtMaximalniPocetRezervaciJednohoKlienta.Text) ? 1 : int.Parse(txtMaximalniPocetRezervaciJednohoKlienta.Text);
 			poskytovatel.RegistraceKlientuPodlehaSchvaleni = chkRegistraceKlientuPodlehaSchvaleni.Checked;
 			poskytovatel.TypRezervace.UdalostiProViceOsob = chkUdalostiProViceOsob.Checked;
 			poskytovatel.TypRezervace.UdalostiMajiOpakovanyTermin = chkUdalostiMajiOpakovanyTermin.Checked;
@@ -124,7 +126,7 @@ namespace RezervacniSystem.Web.Administrace
 		protected void btnOdstranit_Click(object sender, EventArgs e)
 		{
 			int id = int.Parse(hdnIdPoskytovatele.Value);
-			PoskytovatelRepository.Odstran(id);
+			SpravaPoskytovateluService.ZrusitPoskytovatele(id);
 			ZobrazSeznamPoskytovatelu();
 			ZobrazPoskytovatele(null);
 		}

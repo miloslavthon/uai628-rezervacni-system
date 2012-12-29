@@ -12,5 +12,8 @@ namespace RezervacniSystem.Domain.Model.Terminy
 		void Uloz(TerminUdalosti terminUdalosti);
 		IList<TerminUdalosti> VratTerminyDleUdalosti(int idUdalosti);
 		IList<TerminUdalosti> VratAktualnePlatneTerminyDleUdalosti(int idUdalosti);
+		void Odstran(int id);
+		void OdstranVsechnyTerminyUdalosti(int idUdalosti);
+		void OdstranVsechnyTerminyUdalostiProPoskytovatele(int idPoskytovatele);
 	}
 }

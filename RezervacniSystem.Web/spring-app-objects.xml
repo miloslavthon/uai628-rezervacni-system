@@ -3,18 +3,27 @@
 	<object id="Repository" abstract="true" type="RezervacniSystem.Data.NHibernate.NHibernateRepository, RezervacniSystem.Data">
 		<property name="SessionFactory" ref="DataSessionFactory" />
 	</object>
+
 	<object id="PoskytovatelRepository" parent="Repository" type="RezervacniSystem.Data.NHibernate.PoskytovatelRepository, RezervacniSystem.Data.NHibernate" />
 	<object id="UdalostRepository" parent="Repository" type="RezervacniSystem.Data.NHibernate.UdalostRepository, RezervacniSystem.Data.NHibernate" />
+	<object id="TerminUdalostiRepository" parent="Repository" type="RezervacniSystem.Data.NHibernate.TerminUdalostiRepository, RezervacniSystem.Data.NHibernate" />
+
 	<object id="UdalostFactory" type="RezervacniSystem.Domain.Model.Udalosti.UdalostFactory, RezervacniSystem.Domain">
 		<constructor-arg ref="PoskytovatelRepository" />
 	</object>
+
 	<object id="SpravaUdalostiService" type="RezervacniSystem.Application.Impl.SpravaUdalostiService, RezervacniSystem.Application">
 		<constructor-arg ref="UdalostRepository" />
 		<constructor-arg ref="PoskytovatelRepository" />
+		<constructor-arg ref="TerminUdalostiRepository" />
 		<constructor-arg ref="UdalostFactory" />
 	</object>
-	<object id="TerminUdalostiRepository" parent="Repository" type="RezervacniSystem.Data.NHibernate.TerminUdalostiRepository, RezervacniSystem.Data.NHibernate" />
 	<object id="SpravaTerminuService" type="RezervacniSystem.Application.Impl.SpravaTerminuService, RezervacniSystem.Application">
+		<constructor-arg ref="UdalostRepository" />
+		<constructor-arg ref="TerminUdalostiRepository" />
+	</object>
+	<object id="SpravaPoskytovateluService" type="RezervacniSystem.Application.Impl.SpravaPoskytovateluService, RezervacniSystem.Application">
+		<constructor-arg ref="PoskytovatelRepository" />
 		<constructor-arg ref="UdalostRepository" />
 		<constructor-arg ref="TerminUdalostiRepository" />
 	</object>

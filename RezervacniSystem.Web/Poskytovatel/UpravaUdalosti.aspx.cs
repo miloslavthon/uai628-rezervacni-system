@@ -78,7 +78,9 @@ namespace RezervacniSystem.Web.Poskytovatel
 		{
 			try
 			{
-				//SpravaUdalostiService.ZrusitUdalost(int.Parse(Request["Id"]));
+				SpravaUdalostiService.ZrusitUdalost(int.Parse(Request["Id"]));
+
+				Response.Redirect("Udalosti.aspx");
 			}
 			catch (ArgumentException ex)
 			{
@@ -148,6 +150,26 @@ namespace RezervacniSystem.Web.Poskytovatel
 			{
 				int idTerminu = (int)gvTerminy.DataKeys[int.Parse((String)e.CommandArgument)].Value;
 
+				try
+				{
+					SpravaTerminuService.ZrusitTermin(idTerminu);
+				}
+				catch (ArgumentException ex)
+				{
+					lblChybaPriZverejneniTerminu.Text = ex.Message;
+					lblChybaPriZverejneniTerminu.Visible = true;
+
+					log.Warn("Při zrušení termínu došlo k chybě.", ex);
+				}
+				catch (Exception ex)
+				{
+					lblChybaPriZverejneniTerminu.Text = "Při zrušení termínu došlo k neočekávané chybě.";
+					lblChybaPriZverejneniTerminu.Visible = true;
+
+					log.Warn("Při zrušení termínu došlo k chybě.", ex);
+				}
+
+				NactiTerminyUdalosti(int.Parse(Request["Id"]));
 			}
 		}
 

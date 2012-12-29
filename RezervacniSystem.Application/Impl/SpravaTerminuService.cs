@@ -36,6 +36,14 @@ namespace RezervacniSystem.Application.Impl
 			return termin;
 		}
 
+		[Transaction]
+		public void ZrusitTermin(int idTerminu)
+		{
+			// doplnit zrušení případných rezervací
+
+			terminUdalostiRepository.Odstran(idTerminu);
+		}
+
 		private void ZkontrolovatKolizeAUlozit(TerminUdalosti termin)
 		{
 			foreach (TerminUdalosti t in terminUdalostiRepository.VratAktualnePlatneTerminyDleUdalosti(termin.Udalost.Id))
