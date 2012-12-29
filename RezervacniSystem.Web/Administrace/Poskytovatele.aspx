@@ -20,8 +20,7 @@
 				<asp:GridView ID="gvPoskytovatele" runat="server" DataKeyNames="Id" AutoGenerateColumns="false" OnRowCommand="gvPoskytovatele_RowCommand">
 					<Columns>
 						<asp:BoundField HeaderText="Název" DataField="Nazev" />
-						<asp:ButtonField Text="Vybrat" CommandName="Vybrat" />
-						<asp:ButtonField Text="Odstranit" CommandName="Odstranit" />
+						<asp:ButtonField Text="Upravit" CommandName="Upravit" />
 					</Columns>
 					<AlternatingRowStyle BackColor="#e5e5e5" />
 					<SelectedRowStyle BackColor="#b8ddeb" />
@@ -51,6 +50,7 @@
 					Události mají opakovaný temín: <asp:CheckBox ID="chkUdalostiMajiOpakovanyTermin" runat="server" />
 					<br />
 					<asp:Button ID="btnUlozit" runat="server" Text="Uložit" OnClick="btnUlozit_Click" />
+					<asp:Button ID="btnOdstranit" runat="server" Text="Odstranit" OnClientClick="if (!confirm('Opravdu chcete odstranit vybraného poskytovatele?\n\nPři odstranění poskytovatele dojde ke zrušení všech zveřejněných termínů a případných rezervací.')) { return false; }" OnClick="btnOdstranit_Click" />
 				</asp:Panel>
 			</section>
 

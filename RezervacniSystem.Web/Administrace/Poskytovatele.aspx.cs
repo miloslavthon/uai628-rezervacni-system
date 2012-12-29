@@ -61,9 +61,10 @@ namespace RezervacniSystem.Web.Administrace
 		{
 			lblChybaPriVytvoreniPoskytovatele.Visible = false;
 
+			Domain.Model.Poskytovatele.Poskytovatel poskytovatel  = null;
 			try
 			{
-				Domain.Model.Poskytovatele.Poskytovatel poskytovatel = new Domain.Model.Poskytovatele.Poskytovatel(txtNazevPoskytovatele.Text);
+				poskytovatel = new Domain.Model.Poskytovatele.Poskytovatel(txtNazevPoskytovatele.Text);
 				PoskytovatelRepository.Uloz(poskytovatel);
 				ZobrazPoskytovatele(poskytovatel);
 				txtNazevPoskytovatele.Text = null;
@@ -75,25 +76,27 @@ namespace RezervacniSystem.Web.Administrace
 			}
 
 			ZobrazSeznamPoskytovatelu();
+			ZobrazPoskytovatele(poskytovatel);
+			if (poskytovatel != null)
+			{
+				for (int i = 0; i < gvPoskytovatele.Rows.Count; i++)
+				{
+					if (gvPoskytovatele.DataKeys[i].Value.Equals(poskytovatel.Id))
+					{
+						gvPoskytovatele.SelectedIndex = i;
+					}
+				}
+			}
 		}
 
 		protected void gvPoskytovatele_RowCommand(object sender, GridViewCommandEventArgs e)
 		{
 			int id = (int)gvPoskytovatele.DataKeys[int.Parse((String)e.CommandArgument)].Value;
-			if (e.CommandName == "Vybrat")
+			if (e.CommandName == "Upravit")
 			{
 				gvPoskytovatele.SelectedIndex = int.Parse((String)e.CommandArgument);
 				Domain.Model.Poskytovatele.Poskytovatel poskytovatel = PoskytovatelRepository.Vrat(id);
 				ZobrazPoskytovatele(poskytovatel);
-			}
-			else if (e.CommandName == "Odstranit")
-			{
-				PoskytovatelRepository.Odstran(id);
-				ZobrazSeznamPoskytovatelu();
-				if (id.ToString().Equals(hdnIdPoskytovatele.Value))
-				{
-					ZobrazPoskytovatele(null);
-				}
 			}
 		}
 
@@ -116,6 +119,14 @@ namespace RezervacniSystem.Web.Administrace
 
 			PoskytovatelRepository.Uloz(poskytovatel);
 			ZobrazPoskytovatele(poskytovatel);
+		}
+
+		protected void btnOdstranit_Click(object sender, EventArgs e)
+		{
+			int id = int.Parse(hdnIdPoskytovatele.Value);
+			PoskytovatelRepository.Odstran(id);
+			ZobrazSeznamPoskytovatelu();
+			ZobrazPoskytovatele(null);
 		}
 	}
 }
