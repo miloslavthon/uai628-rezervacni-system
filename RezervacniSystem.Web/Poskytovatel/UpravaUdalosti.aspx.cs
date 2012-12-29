@@ -144,6 +144,17 @@ namespace RezervacniSystem.Web.Poskytovatel
 			}
 		}
 
+		protected void gvTerminy_RowDataBound(object sender, GridViewRowEventArgs e)
+		{
+			if (e.Row.RowType != DataControlRowType.DataRow)
+			{
+				return;
+			}
+
+			LinkButton lnkZrusit = (LinkButton)e.Row.Cells[4].Controls[0];
+			lnkZrusit.OnClientClick = "if (!confirm('Opravdu chcete zrušit vybraný termín se všmi případnými rezervacemi?')) { return false; }";
+		}
+
 		protected void gvTerminy_RowCommand(object sender, GridViewCommandEventArgs e)
 		{
 			if (e.CommandName == "Zrusit")

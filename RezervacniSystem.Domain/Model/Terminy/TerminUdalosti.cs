@@ -40,7 +40,7 @@ namespace RezervacniSystem.Domain.Model.Terminy
 		private TerminUdalosti(Udalost udalost, CasTrvani casTrvani, TimeSpan uzaverkaRezervaci, String poznamka)
 		{
 			Validate.NotNull(udalost, "Pro vytvoření termínu musí být určena událost.");
-			Validate.IsTrue(uzaverkaRezervaci < TimeSpan.FromDays(99), "Doba trvání nemůže být větší než 1 den.");
+			Validate.IsTrue(uzaverkaRezervaci <= TimeSpan.FromDays(99), "Doba trvání nemůže být větší než 99 dnů.");
 
 			this.Udalost = udalost;
 			this.CasTrvani = casTrvani;

@@ -166,6 +166,24 @@ namespace RezervacniSystem.Web.Poskytovatel {
         protected global::System.Web.UI.WebControls.TextBox txtTermin_Datum;
         
         /// <summary>
+        /// vldTermin_Datum control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator vldTermin_Datum;
+        
+        /// <summary>
+        /// vldTermin_Datum_Format control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator vldTermin_Datum_Format;
+        
+        /// <summary>
         /// viewOpakovanyTermin control.
         /// </summary>
         /// <remarks>
@@ -193,6 +211,24 @@ namespace RezervacniSystem.Web.Poskytovatel {
         protected global::System.Web.UI.WebControls.TextBox txtTermin_Cas;
         
         /// <summary>
+        /// vldTermin_Cas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator vldTermin_Cas;
+        
+        /// <summary>
+        /// vldTermin_Cas_Format control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator vldTermin_Cas_Format;
+        
+        /// <summary>
         /// spanPlatnyDo control.
         /// </summary>
         /// <remarks>
@@ -211,6 +247,24 @@ namespace RezervacniSystem.Web.Poskytovatel {
         protected global::System.Web.UI.WebControls.TextBox txtPlatnyDo;
         
         /// <summary>
+        /// vldPlatnyDo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator vldPlatnyDo;
+        
+        /// <summary>
+        /// vldPlatnyDo_Format control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator vldPlatnyDo_Format;
+        
+        /// <summary>
         /// txtDobaTrvani_Hodiny control.
         /// </summary>
         /// <remarks>
@@ -218,6 +272,24 @@ namespace RezervacniSystem.Web.Poskytovatel {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDobaTrvani_Hodiny;
+        
+        /// <summary>
+        /// vldDobaTrvani_Hodiny control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator vldDobaTrvani_Hodiny;
+        
+        /// <summary>
+        /// vldDobaTrvani_Hodiny_Format control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator vldDobaTrvani_Hodiny_Format;
         
         /// <summary>
         /// txtDobaTrvani_Minuty control.
@@ -229,6 +301,24 @@ namespace RezervacniSystem.Web.Poskytovatel {
         protected global::System.Web.UI.WebControls.TextBox txtDobaTrvani_Minuty;
         
         /// <summary>
+        /// vldDobaTrvani_Minuty control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator vldDobaTrvani_Minuty;
+        
+        /// <summary>
+        /// vldDobaTrvani_Minuty_Format control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator vldDobaTrvani_Minuty_Format;
+        
+        /// <summary>
         /// txtUzaverkaRezervaci_Dny control.
         /// </summary>
         /// <remarks>
@@ -236,6 +326,24 @@ namespace RezervacniSystem.Web.Poskytovatel {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtUzaverkaRezervaci_Dny;
+        
+        /// <summary>
+        /// vldUzaverkaRezervaci_Dny control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator vldUzaverkaRezervaci_Dny;
+        
+        /// <summary>
+        /// vldUzaverkaRezervaci_Dny_Format control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator vldUzaverkaRezervaci_Dny_Format;
         
         /// <summary>
         /// txtUzaverkaRezervaci_Hodiny control.
@@ -247,6 +355,24 @@ namespace RezervacniSystem.Web.Poskytovatel {
         protected global::System.Web.UI.WebControls.TextBox txtUzaverkaRezervaci_Hodiny;
         
         /// <summary>
+        /// vldUzaverkaRezervaci_Hodiny control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator vldUzaverkaRezervaci_Hodiny;
+        
+        /// <summary>
+        /// vldUzaverkaRezervaci_Hodiny_Format control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator vldUzaverkaRezervaci_Hodiny_Format;
+        
+        /// <summary>
         /// txtUzaverkaRezervaci_Minuty control.
         /// </summary>
         /// <remarks>
@@ -254,6 +380,24 @@ namespace RezervacniSystem.Web.Poskytovatel {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtUzaverkaRezervaci_Minuty;
+        
+        /// <summary>
+        /// vldUzaverkaRezervaci_Minuty control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator vldUzaverkaRezervaci_Minuty;
+        
+        /// <summary>
+        /// vldUzaverkaRezervaci_Minuty_Format control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator vldUzaverkaRezervaci_Minuty_Format;
         
         /// <summary>
         /// txtPoznamka control.
