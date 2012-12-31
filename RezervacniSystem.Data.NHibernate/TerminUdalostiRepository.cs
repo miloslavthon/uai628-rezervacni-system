@@ -18,9 +18,28 @@ namespace RezervacniSystem.Data.NHibernate
 		{
 			DateTime datum = DateTime.Now;
 
-			return Query.Where(
-				t => t.Udalost.Id == idUdalosti &&
+			return Query.Where(t =>
+				t.Udalost.Id == idUdalosti &&
 				(t.Typ == TypTerminu.JEDNORAZOVY && t.Datum > datum || t.Typ == TypTerminu.OPAKOVANY && t.PlatnyDo > datum)
+			).List();
+		}
+
+		public IList<TerminUdalosti> VratPlatneJednorazoveTerminyDleUdalosti(int idUdalosti, DateTime datumOd, DateTime datumDo)
+		{
+			return Query.Where(t =>
+				t.Udalost.Id == idUdalosti &&
+				t.Typ == TypTerminu.JEDNORAZOVY &&
+				t.Datum > datumOd &&
+				t.Datum < datumDo
+			).List();
+		}
+
+		public IList<TerminUdalosti> VratPlatneOpakovaneTerminyDleUdalosti(int idUdalosti, DateTime datum)
+		{
+			return Query.Where(t =>
+				t.Udalost.Id == idUdalosti &&
+				t.Typ == TypTerminu.OPAKOVANY &&
+				t.PlatnyDo > datum
 			).List();
 		}
 

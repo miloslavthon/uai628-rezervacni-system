@@ -470,6 +470,13 @@ fieldset {
         width: auto;
     }
 
+    input[type="submit"]:disabled,
+    input[type="button"]:disabled,
+    button:disabled {
+        background-color: #EFEEEF;
+		cursor: default;
+    }
+
     td input[type="submit"],
     td input[type="button"],
     td button {

@@ -27,4 +27,9 @@
 		<constructor-arg ref="UdalostRepository" />
 		<constructor-arg ref="TerminUdalostiRepository" />
 	</object>
+	<object id="RezervaceService" type="RezervacniSystem.Application.Impl.RezervaceService, RezervacniSystem.Application">
+		<constructor-arg ref="PoskytovatelRepository" />
+		<constructor-arg ref="UdalostRepository" />
+		<constructor-arg ref="TerminUdalostiRepository" />
+	</object>
 </objects>

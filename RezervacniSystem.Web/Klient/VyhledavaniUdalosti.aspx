@@ -35,9 +35,9 @@
 				<asp:GridView ID="gvUdalosti" runat="server" DataKeyNames="Id" AutoGenerateColumns="false" OnRowCommand="gvUdalosti_RowCommand">
 					<EmptyDataRowStyle Font-Italic="true" />
 					<Columns>
-						<asp:BoundField HeaderText="Název události" DataField="Nazev" ItemStyle-Width="20%" />
-						<asp:BoundField HeaderText="Popis události" DataField="Popis" ItemStyle-Width="80%" />
-						<asp:ButtonField Text="Zobrazit termíny" CommandName="ZobrazitTerminy" ControlStyle-Width="120px" />
+						<asp:BoundField HeaderText="Název události" DataField="Nazev" ItemStyle-Width="30%" />
+						<asp:BoundField HeaderText="Popis události" DataField="Popis" ItemStyle-Width="70%" />
+						<asp:ButtonField Text="Vyhledat volné termíny" CommandName="VyhledatTerminy" ControlStyle-Width="150px" />
 					</Columns>
 					<AlternatingRowStyle BackColor="#e5e5e5" />
 				</asp:GridView>

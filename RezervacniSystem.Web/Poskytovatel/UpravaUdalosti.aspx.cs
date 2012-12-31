@@ -2,6 +2,7 @@
 using RezervacniSystem.Application;
 using RezervacniSystem.Domain.Model.Terminy;
 using RezervacniSystem.Domain.Model.Udalosti;
+using RezervacniSystem.Infrastructure;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -40,8 +41,10 @@ namespace RezervacniSystem.Web.Poskytovatel
 				{
 					GoToErrorPage("Požadovaná událost neexistuje.");
 				}
-
-				ZobrazUdalost(udalost);
+				else
+				{
+					ZobrazUdalost(udalost);
+				}
 			}
 		}
 
@@ -219,31 +222,11 @@ namespace RezervacniSystem.Web.Poskytovatel
 					Termin = t.Typ == TypTerminu.JEDNORAZOVY ?
 						t.Datum.Value.ToString("d") + " " + t.CasTrvani.Cas.ToString(@"hh\:mm") :
 						DenVTydnuPopis.ResourceManager.GetString(t.Den.Value.ToString()) + " " + t.CasTrvani.Cas.ToString(@"hh\:mm") + ", do " + t.PlatnyDo.Value.ToString("d"),
-					DobaTrvani = VypisDobu(t.CasTrvani.DobaTrvani),
-					UzaverkaRezervaci = VypisDobu(t.UzaverkaRezervaci),
+					DobaTrvani = DateTimeUtils.VypisDobu(t.CasTrvani.DobaTrvani),
+					UzaverkaRezervaci = DateTimeUtils.VypisDobu(t.UzaverkaRezervaci),
 					Poznamka = t.Poznamka
 				};
 			}
-		}
-
-		private static String VypisDobu(TimeSpan timeSpan)
-		{
-			StringBuilder sb = new StringBuilder();
-
-			if (timeSpan.Days > 0)
-			{
-				sb.Append(timeSpan.Days).Append(" d. ");
-			}
-			if (timeSpan.Hours > 0)
-			{
-				sb.Append(timeSpan.Hours).Append(" hod. ");
-			}
-			if (timeSpan.Minutes > 0)
-			{
-				sb.Append(timeSpan.Minutes).Append(" min. ");
-			}
-
-			return sb.ToString().TrimEnd();
 		}
 	}
 }

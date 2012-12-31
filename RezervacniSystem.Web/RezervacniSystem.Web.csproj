@@ -198,6 +198,7 @@
     <Content Include="Images\orderedList9.png" />
     <Content Include="Klient\Default.aspx" />
     <Content Include="Klient\Prehled.aspx" />
+    <Content Include="Klient\VyhledaniTerminu.aspx" />
     <Content Include="Klient\VyhledavaniUdalosti.aspx" />
     <Content Include="packages.config" />
     <Content Include="Klient\Web.config" />
@@ -338,6 +339,13 @@
     <Compile Include="Klient\Prehled.aspx.designer.cs">
       <DependentUpon>Prehled.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Klient\VyhledaniTerminu.aspx.cs">
+      <DependentUpon>VyhledaniTerminu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Klient\VyhledaniTerminu.aspx.designer.cs">
+      <DependentUpon>VyhledaniTerminu.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Klient\VyhledavaniUdalosti.aspx.cs">
       <DependentUpon>VyhledavaniUdalosti.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -402,6 +410,10 @@
     <ProjectReference Include="..\RezervacniSystem.Domain\RezervacniSystem.Domain.csproj">
       <Project>{8cd0b966-5e3a-48da-933e-e6b92bb32f2b}</Project>
       <Name>RezervacniSystem.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RezervacniSystem.Infrastructure\RezervacniSystem.Infrastructure.csproj">
+      <Project>{3f02aaac-12c1-4c6b-8710-4b9125a79761}</Project>
+      <Name>RezervacniSystem.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

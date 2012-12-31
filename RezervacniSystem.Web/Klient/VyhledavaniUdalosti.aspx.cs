@@ -56,13 +56,10 @@ namespace RezervacniSystem.Web.Klient
 
 		protected void gvUdalosti_RowCommand(object sender, GridViewCommandEventArgs e)
 		{
-			if (e.CommandName == "ZobrazitTerminy")
+			if (e.CommandName == "VyhledatTerminy")
 			{
-				gvUdalosti.SelectedIndex = int.Parse((String)e.CommandArgument);
-				int idPoskytovatele = (int)gvPoskytovatele.SelectedDataKey.Value;
 				int idUdalosti = (int)gvUdalosti.DataKeys[int.Parse((String)e.CommandArgument)].Value;
-
-				// 
+				Response.Redirect("VyhledaniTerminu.aspx?Id=" + idUdalosti);
 			}
 		}
 
