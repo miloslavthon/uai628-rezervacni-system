@@ -69,5 +69,10 @@ namespace RezervacniSystem.Web
 		{
 
 		}
+
+		protected void loginStatus_LoggedOut(object sender, EventArgs e)
+		{
+			Session.Abandon();
+		}
 	}
 }
