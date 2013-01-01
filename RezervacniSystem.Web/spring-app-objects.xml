@@ -7,6 +7,7 @@
 	<object id="PoskytovatelRepository" parent="Repository" type="RezervacniSystem.Data.NHibernate.PoskytovatelRepository, RezervacniSystem.Data.NHibernate" />
 	<object id="UdalostRepository" parent="Repository" type="RezervacniSystem.Data.NHibernate.UdalostRepository, RezervacniSystem.Data.NHibernate" />
 	<object id="TerminUdalostiRepository" parent="Repository" type="RezervacniSystem.Data.NHibernate.TerminUdalostiRepository, RezervacniSystem.Data.NHibernate" />
+	<object id="KlientRepository" parent="Repository" type="RezervacniSystem.Data.NHibernate.KlientRepository, RezervacniSystem.Data.NHibernate" />
 
 	<object id="UdalostFactory" type="RezervacniSystem.Domain.Model.Udalosti.UdalostFactory, RezervacniSystem.Domain">
 		<constructor-arg ref="PoskytovatelRepository" />

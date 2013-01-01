@@ -87,7 +87,7 @@ namespace RezervacniSystem.Web.Klient
 					lblChybaPriRezervaciTerminu.Text = "Při rezervaci termínu došlo k neočekávané chybě.";
 					lblChybaPriRezervaciTerminu.Visible = true;
 
-					log.Warn("Při zrušení termínu došlo k chybě.", ex);
+					log.Error("Při zrušení termínu došlo k chybě.", ex);
 				}
 			}
 		}

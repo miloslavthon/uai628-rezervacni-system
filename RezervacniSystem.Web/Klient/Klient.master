@@ -13,6 +13,7 @@
 				<ul id="submenu">
 					<li><a id="A1" runat="server" href="~/Klient/Prehled.aspx">Přehled</a></li>
 					<li><a id="A2" runat="server" href="~/Klient/VyhledavaniUdalosti.aspx">Vyhledávání událostí</a></li>
+					<li><a id="A3" runat="server" href="~/Klient/OsobniNastaveni.aspx">Osobní nastavení</a></li>
 				</ul>
 			</nav>
 		</div>

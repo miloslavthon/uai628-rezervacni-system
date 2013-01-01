@@ -197,6 +197,7 @@
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
     <Content Include="Klient\Default.aspx" />
+    <Content Include="Klient\OsobniNastaveni.aspx" />
     <Content Include="Klient\Prehled.aspx" />
     <Content Include="Klient\VyhledaniTerminu.aspx" />
     <Content Include="Klient\VyhledavaniUdalosti.aspx" />
@@ -331,6 +332,13 @@
     </Compile>
     <Compile Include="Klient\Klient.master.designer.cs">
       <DependentUpon>Klient.master</DependentUpon>
+    </Compile>
+    <Compile Include="Klient\OsobniNastaveni.aspx.cs">
+      <DependentUpon>OsobniNastaveni.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Klient\OsobniNastaveni.aspx.designer.cs">
+      <DependentUpon>OsobniNastaveni.aspx</DependentUpon>
     </Compile>
     <Compile Include="Klient\Prehled.aspx.cs">
       <DependentUpon>Prehled.aspx</DependentUpon>
