@@ -22,7 +22,7 @@ namespace RezervacniSystem.Web.Klient
 
 			if (!IsPostBack)
 			{
-				Domain.Model.Klienti.Klient klient = KlientRepository.NajdiDleUzivatelskehoJmena(User.Identity.Name);
+				Domain.Model.Klienti.Klient klient = KlientRepository.VratKlientaDleUzivatelskehoJmena(User.Identity.Name);
 				if (klient != null)
 				{
 					ZobrazUdaje(klient);

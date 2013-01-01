@@ -9,9 +9,14 @@ namespace RezervacniSystem.Data.NHibernate
 {
 	public class KlientRepository : NHibernateRepository<Klient>, IKlientRepository
 	{
-		public Klient NajdiDleUzivatelskehoJmena(String uzivatelskeJmeno)
+		public Klient VratKlientaDleUzivatelskehoJmena(String uzivatelskeJmeno)
 		{
 			return Query.Where(k => k.UzivatelskeJmeno == uzivatelskeJmeno).SingleOrDefault();
+		}
+
+		public int VratIdKlientaDleUzivatelskehoJmena(String uzivatelskeJmeno)
+		{
+			return Query.Where(k => k.UzivatelskeJmeno == uzivatelskeJmeno).Select(k => k.Id).SingleOrDefault<int>();
 		}
 	}
 }

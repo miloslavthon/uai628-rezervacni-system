@@ -16,8 +16,12 @@ namespace RezervacniSystem.Web.Klient
 		{
 			if (!IsPostBack)
 			{
-				Domain.Model.Klienti.Klient klient = KlientRepository.NajdiDleUzivatelskehoJmena(User.Identity.Name);
-				secUpozorneni.Visible = klient == null;
+				int idKlienta = KlientRepository.VratIdKlientaDleUzivatelskehoJmena(User.Identity.Name);
+				if (idKlienta != 0)
+				{
+					secUpozorneni.Visible = false;
+					SpravaUzivatelu.IdKlienta = idKlienta;
+				}
 			}
 		}
 	}
