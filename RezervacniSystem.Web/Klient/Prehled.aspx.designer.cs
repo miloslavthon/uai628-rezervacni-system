@@ -11,5 +11,23 @@ namespace RezervacniSystem.Web.Klient {
     
     
     public partial class Prehled {
+        
+        /// <summary>
+        /// secUpozorneni control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl secUpozorneni;
+        
+        /// <summary>
+        /// lnkZde control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkZde;
     }
 }
