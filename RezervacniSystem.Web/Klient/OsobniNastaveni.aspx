@@ -20,4 +20,6 @@
 		</ContentTemplate>
 	</asp:UpdatePanel>
 
+	Změnu hesla můžete provést <asp:HyperLink ID="lnkZmenaHesla" runat="server" NavigateUrl="~/Account/Manage.aspx">zde</asp:HyperLink>.
+
 </asp:Content>
