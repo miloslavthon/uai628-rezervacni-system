@@ -17,5 +17,6 @@ namespace RezervacniSystem.Domain.Model.Terminy
 		void Odstran(int id);
 		void OdstranVsechnyTerminyUdalosti(int idUdalosti);
 		void OdstranVsechnyTerminyUdalostiProPoskytovatele(int idPoskytovatele);
+		void Lock(TerminUdalosti terminUdalosti);
 	}
 }

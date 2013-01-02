@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RezervacniSystem.Data.NHibernate
 {
-	public class KlientRepository : NHibernateRepository<Klient>, IKlientRepository
+	public class KlientRepository : DomainObjectRepository<Klient>, IKlientRepository
 	{
 		public Klient VratKlientaDleUzivatelskehoJmena(String uzivatelskeJmeno)
 		{

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RezervacniSystem.Data.NHibernate
 {
-	public class TerminUdalostiRepository : NHibernateRepository<TerminUdalosti>, ITerminUdalostiRepository
+	public class TerminUdalostiRepository : DomainObjectRepository<TerminUdalosti>, ITerminUdalostiRepository
 	{
 		public IList<TerminUdalosti> VratTerminyDleUdalosti(int idUdalosti)
 		{

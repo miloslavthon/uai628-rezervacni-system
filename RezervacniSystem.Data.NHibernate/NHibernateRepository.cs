@@ -1,5 +1,4 @@
 ﻿using NHibernate;
-using RezervacniSystem.Domain.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RezervacniSystem.Data.NHibernate
 {
-	public abstract class NHibernateRepository<T> where T : DomainObject
+	public abstract class NHibernateRepository
 	{
 		public ISessionFactory SessionFactory { get; set; }
 
@@ -17,51 +16,6 @@ namespace RezervacniSystem.Data.NHibernate
 			get
 			{
 				return SessionFactory.GetCurrentSession();
-			}
-		}
-
-		public virtual T Vrat(int id)
-		{
-			return CurrentSession.Get<T>(id);
-		}
-
-		public virtual T VratProUpravy(int id)
-		{
-			return CurrentSession.Get<T>(id, LockMode.Upgrade);
-		}
-
-		public virtual IList<T> VratVse()
-		{
-			return CurrentSession.QueryOver<T>().List<T>();
-		}
-
-		public virtual void Uloz(T domainObject)
-		{
-			CurrentSession.SaveOrUpdate(domainObject);
-			CurrentSession.Flush();
-		}
-
-		public virtual void Odstran(int id)
-		{
-			Odstran(Vrat(id));
-		}
-
-		public virtual void Odstran(T domainObject)
-		{
-			CurrentSession.Delete(domainObject);
-			CurrentSession.Flush();
-		}
-
-		public virtual void Lock(T domainObject)
-		{
-			CurrentSession.Lock(domainObject, LockMode.Upgrade);
-		}
-
-		protected IQueryOver<T, T> Query
-		{
-			get
-			{
-				return CurrentSession.QueryOver<T>();
 			}
 		}
 	}

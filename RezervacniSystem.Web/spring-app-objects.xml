@@ -8,6 +8,9 @@
 	<object id="UdalostRepository" parent="Repository" type="RezervacniSystem.Data.NHibernate.UdalostRepository, RezervacniSystem.Data.NHibernate" />
 	<object id="TerminUdalostiRepository" parent="Repository" type="RezervacniSystem.Data.NHibernate.TerminUdalostiRepository, RezervacniSystem.Data.NHibernate" />
 	<object id="KlientRepository" parent="Repository" type="RezervacniSystem.Data.NHibernate.KlientRepository, RezervacniSystem.Data.NHibernate" />
+	<object id="TerminRezervaceRepository" parent="Repository" type="RezervacniSystem.Data.NHibernate.TerminRezervaceRepository, RezervacniSystem.Data.NHibernate" />
+	<object id="RezervaceTerminuRepository" parent="Repository" type="RezervacniSystem.Data.NHibernate.RezervaceTerminuRepository, RezervacniSystem.Data.NHibernate" />
+	<object id="RegistraceKlientaRepository" parent="Repository" type="RezervacniSystem.Data.NHibernate.RegistraceKlientaRepository, RezervacniSystem.Data.NHibernate" />
 
 	<object id="UdalostFactory" type="RezervacniSystem.Domain.Model.Udalosti.UdalostFactory, RezervacniSystem.Domain">
 		<constructor-arg ref="PoskytovatelRepository" />
@@ -32,5 +35,9 @@
 		<constructor-arg ref="PoskytovatelRepository" />
 		<constructor-arg ref="UdalostRepository" />
 		<constructor-arg ref="TerminUdalostiRepository" />
+		<constructor-arg ref="KlientRepository" />
+		<constructor-arg ref="TerminRezervaceRepository" />
+		<constructor-arg ref="RezervaceTerminuRepository" />
+		<constructor-arg ref="RegistraceKlientaRepository" />
 	</object>
 </objects>

@@ -41,6 +41,11 @@
     <Compile Include="Model\Poskytovatele\IPoskytovatelRepository.cs" />
     <Compile Include="Model\Poskytovatele\Poskytovatel.cs" />
     <Compile Include="Model\Poskytovatele\TypRezervace.cs" />
+    <Compile Include="Model\RegistraceKlienta\IRegistraceKlientaRepository.cs" />
+    <Compile Include="Model\Rezervace\IRezervaceTerminuRepository.cs" />
+    <Compile Include="Model\Rezervace\RezervaceTerminu.cs" />
+    <Compile Include="Model\TerminyRezervaci\ITerminRezervaceRepository.cs" />
+    <Compile Include="Model\TerminyRezervaci\TerminRezervace.cs" />
     <Compile Include="Model\Terminy\CasTrvani.cs" />
     <Compile Include="Model\Terminy\DateTimeExt.cs" />
     <Compile Include="Model\Terminy\DenVTydnu.cs" />

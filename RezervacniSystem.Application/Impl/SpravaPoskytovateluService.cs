@@ -26,7 +26,9 @@ namespace RezervacniSystem.Application.Impl
 		[Transaction]
 		public void ZrusitPoskytovatele(int idPoskytovatele)
 		{
-			// doplnit zrušení případných rezervací
+			// zrušení rezervací
+			// zrušení termínů rezervací
+			// zrušení registrací klientů
 
 			terminUdalostiRepository.OdstranVsechnyTerminyUdalostiProPoskytovatele(idPoskytovatele);
 			udalostRepository.OdstranVsechnyUdalostiPoskytovatele(idPoskytovatele);

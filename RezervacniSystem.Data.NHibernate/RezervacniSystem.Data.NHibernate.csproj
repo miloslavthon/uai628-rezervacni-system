@@ -45,10 +45,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DomainObjectRepository.cs" />
     <Compile Include="KlientRepository.cs" />
     <Compile Include="NHibernateRepository.cs" />
     <Compile Include="PoskytovatelRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistraceKlientaRepository.cs" />
+    <Compile Include="RezervaceTerminuRepository.cs" />
+    <Compile Include="TerminRezervaceRepository.cs" />
     <Compile Include="TerminUdalostiRepository.cs" />
     <Compile Include="UdalostRepository.cs" />
   </ItemGroup>
@@ -72,6 +76,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mappings\Klient.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\TerminRezervace.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\RezervaceTerminu.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

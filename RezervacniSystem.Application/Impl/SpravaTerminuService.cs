@@ -39,7 +39,8 @@ namespace RezervacniSystem.Application.Impl
 		[Transaction]
 		public void ZrusitTermin(int idTerminu)
 		{
-			// doplnit zrušení případných rezervací
+			// zrušení rezervací
+			// zrušení termínů rezervací
 
 			terminUdalostiRepository.Odstran(idTerminu);
 		}

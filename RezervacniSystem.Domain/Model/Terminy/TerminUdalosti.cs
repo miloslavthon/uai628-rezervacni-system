@@ -73,6 +73,18 @@ namespace RezervacniSystem.Domain.Model.Terminy
 			return CasTrvani.KolidujeS(termin.CasTrvani);
 		}
 
+		public virtual bool OdpovidaDatumTerminu(DateTime datum)
+		{
+			if (Typ == TypTerminu.JEDNORAZOVY)
+			{
+				return Datum.Value == datum.Date && CasTrvani.Cas == datum.TimeOfDay;
+			}
+			else
+			{
+				return Den.Value == datum.VratDenVTydnu() && CasTrvani.Cas == datum.TimeOfDay && PlatnyDo.Value >= datum.Date;
+			}
+		}
+
 		private static void KontrolaOpakovanehoTerminu(DenVTydnu denVTydnu, DateTime platnyDo, TimeSpan cas, TimeSpan uzaverkaRezervaci)
 		{
 			int rozdilDnuVTydnu = platnyDo.VratDenVTydnu() - denVTydnu;

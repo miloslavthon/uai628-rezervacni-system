@@ -70,7 +70,7 @@ namespace RezervacniSystem.Web.Klient
 
 				try
 				{
-					RezervaceService.RezervovatTermin(idTerminuUdalosti, datum);
+					RezervaceService.RezervovatTermin(SpravaUzivatelu.IdKlienta, idTerminuUdalosti, datum);
 
 					lblZpravaORezervaci.Text = "Termín " + datum.ToString("g") + " byl rezervován.";
 					lblZpravaORezervaci.Visible = true;
@@ -87,7 +87,7 @@ namespace RezervacniSystem.Web.Klient
 					lblChybaPriRezervaciTerminu.Text = "Při rezervaci termínu došlo k neočekávané chybě.";
 					lblChybaPriRezervaciTerminu.Visible = true;
 
-					log.Error("Při zrušení termínu došlo k chybě.", ex);
+					log.Error("Při rezervaci termínu došlo k chybě.", ex);
 				}
 			}
 		}

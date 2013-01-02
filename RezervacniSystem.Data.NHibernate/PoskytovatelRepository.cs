@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RezervacniSystem.Data.NHibernate
 {
-	public class PoskytovatelRepository : NHibernateRepository<Poskytovatel>, IPoskytovatelRepository
+	public class PoskytovatelRepository : DomainObjectRepository<Poskytovatel>, IPoskytovatelRepository
 	{
 		public override void Uloz(Poskytovatel domainObject)
 		{
