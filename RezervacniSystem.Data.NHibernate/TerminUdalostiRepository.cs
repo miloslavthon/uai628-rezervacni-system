@@ -20,7 +20,7 @@ namespace RezervacniSystem.Data.NHibernate
 
 			return Query.Where(t =>
 				t.Udalost.Id == idUdalosti &&
-				(t.Typ == TypTerminu.JEDNORAZOVY && t.Datum > datum || t.Typ == TypTerminu.OPAKOVANY && t.PlatnyDo > datum)
+				(t.Typ == TypTerminu.JEDNORAZOVY && t.Datum >= datum || t.Typ == TypTerminu.OPAKOVANY && t.PlatnyDo >= datum)
 			).List();
 		}
 
@@ -29,7 +29,7 @@ namespace RezervacniSystem.Data.NHibernate
 			return Query.Where(t =>
 				t.Udalost.Id == idUdalosti &&
 				t.Typ == TypTerminu.JEDNORAZOVY &&
-				t.Datum > datumOd &&
+				t.Datum >= datumOd &&
 				t.Datum < datumDo
 			).List();
 		}
@@ -39,7 +39,7 @@ namespace RezervacniSystem.Data.NHibernate
 			return Query.Where(t =>
 				t.Udalost.Id == idUdalosti &&
 				t.Typ == TypTerminu.OPAKOVANY &&
-				t.PlatnyDo > datum
+				t.PlatnyDo >= datum
 			).List();
 		}
 
