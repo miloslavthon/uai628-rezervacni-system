@@ -485,6 +485,13 @@ fieldset {
         margin-right: 4px;
     }
 
+	span.checkbox label {
+		display: inline;
+		font-size: 1em;
+		font-weight: normal;
+		padding-left:5px;
+	}
+
 /* info and errors */
 .message-info {
     border: 1px solid;

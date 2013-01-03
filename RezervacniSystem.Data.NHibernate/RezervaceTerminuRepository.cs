@@ -1,4 +1,5 @@
-﻿using RezervacniSystem.Domain.Model.Rezervace;
+﻿using NHibernate;
+using RezervacniSystem.Domain.Model.Rezervace;
 using RezervacniSystem.Domain.Model.TerminyRezervaci;
 using System;
 using System.Collections.Generic;
@@ -10,21 +11,22 @@ namespace RezervacniSystem.Data.NHibernate
 {
 	public class RezervaceTerminuRepository : DomainObjectRepository<RezervaceTerminu>, IRezervaceTerminuRepository
 	{
-		public IList<RezervaceTerminu> VratRezervace(int idKlienta, bool pouzeAktualnePlatne)
+		public IList<PrehledRezervace> VratRezervace(int idKlienta, bool pouzeAktualnePlatne)
 		{
-			var query = Query
-				.Where(r => r.Klient.Id == idKlienta)
-				.JoinQueryOver<TerminRezervace>(r => r.Termin);
-
-			if (pouzeAktualnePlatne)
-			{
-				query = query.And(r => r.Datum >= DateTime.Now);
-			}
-
-			return query
-				.JoinQueryOver<RezervacniSystem.Domain.Model.Terminy.TerminUdalosti>(t => t.TerminUdalosti)
-				.JoinQueryOver<RezervacniSystem.Domain.Model.Udalosti.Udalost>(t => t.Udalost)
-				.List();
+			return CurrentSession.CreateQuery(@"
+				select r.Id, terminRezervace.Datum, terminUdalosti.CasTrvani.DobaTrvani, udalost.Popis, poskytovatel.Nazev
+				from RezervaceTerminu r
+					join r.Termin terminRezervace
+					join r.Poskytovatel poskytovatel
+					join terminRezervace.TerminUdalosti terminUdalosti
+					join terminUdalosti.Udalost udalost
+				where r.Klient.Id = :idKlienta" +
+				(pouzeAktualnePlatne ? " and terminRezervace.Datum >= getdate()" : null) +
+				" order by terminRezervace.Datum")
+				.SetInt32("idKlienta", idKlienta)
+				.Enumerable<Object[]>()
+				.Select(o => new PrehledRezervace((int)o[0], (DateTime)o[1], (TimeSpan)o[2], (String)o[3], (String)o[4]))
+				.ToList();
 		}
 
 		public int VratPocetAktualnePlatnychRezervaci(int idKlienta, int idPoskytovatele)
