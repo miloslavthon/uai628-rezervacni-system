@@ -1,4 +1,6 @@
-﻿using RezervacniSystem.Domain.Model.Klienti;
+﻿using Common.Logging;
+using RezervacniSystem.Application;
+using RezervacniSystem.Domain.Model.Klienti;
 using RezervacniSystem.Domain.Model.Rezervace;
 using System;
 using System.Collections;
@@ -12,11 +14,16 @@ namespace RezervacniSystem.Web.Klient
 {
 	public partial class Prehled : BasePage
 	{
+		private static readonly ILog log = LogManager.GetLogger(typeof(Prehled));
+
 		public IKlientRepository KlientRepository { get; set; }
 		public IRezervaceTerminuRepository RezervaceTerminuRepository { get; set; }
+		public IRezervaceService RezervaceService { get; set; }
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
+			lblChybaPriZruseniTerminu.Visible = false;
+
 			if (!IsPostBack)
 			{
 				int idKlienta = KlientRepository.VratIdKlientaDleUzivatelskehoJmena(User.Identity.Name);
@@ -35,6 +42,17 @@ namespace RezervacniSystem.Web.Klient
 			NactiRezervace();
 		}
 
+		protected void gvRezervace_RowDataBound(object sender, GridViewRowEventArgs e)
+		{
+			if (e.Row.RowType != DataControlRowType.DataRow)
+			{
+				return;
+			}
+
+			LinkButton lnkZrusit = (LinkButton)e.Row.Cells[4].Controls[0];
+			lnkZrusit.OnClientClick = "if (!confirm('Opravdu chcete zrušit vybranou rezervaci?')) { return false; }";
+		}
+
 		protected void gvRezervace_RowCommand(object sender, GridViewCommandEventArgs e)
 		{
 			if (e.CommandName == "Zrusit")
@@ -42,7 +60,24 @@ namespace RezervacniSystem.Web.Klient
 				gvRezervace.SelectedIndex = int.Parse((String)e.CommandArgument);
 				int idRezervace = (int)gvRezervace.DataKeys[int.Parse((String)e.CommandArgument)].Value;
 
-				// zrušení rezervace
+				try
+				{
+					RezervaceService.ZrusitRezervaciZeStranyKlienta(idRezervace);
+				}
+				catch (ArgumentException ex)
+				{
+					lblChybaPriZruseniTerminu.Text = ex.Message;
+					lblChybaPriZruseniTerminu.Visible = true;
+
+					log.Warn("Při zrušení rezervace došlo k chybě.", ex);
+				}
+				catch (Exception ex)
+				{
+					lblChybaPriZruseniTerminu.Text = "Při zrušení rezervace došlo k neočekávané chybě.";
+					lblChybaPriZruseniTerminu.Visible = true;
+
+					log.Warn("Při zrušení rezervace došlo k chybě.", ex);
+				}
 
 				NactiRezervace();
 			}

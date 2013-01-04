@@ -138,6 +138,31 @@ namespace RezervacniSystem.Application.Impl
 			rezervaceTerminuRepository.Uloz(rezervace);
 		}
 
+		[Transaction]
+		public void ZrusitRezervaciZeStranyKlienta(int idRezervace)
+		{
+			RezervaceTerminu rezervace = rezervaceTerminuRepository.Vrat(idRezervace);
+			Validate.NotNull(rezervace, "Není určena platná rezervace.");
+
+			TerminRezervace terminRezervace = rezervace.Termin;
+
+			// kontrola uzávěrky rezervací
+			Validate.IsTrue(DateTime.Now < terminRezervace.Datum.Subtract(terminRezervace.TerminUdalosti.UzaverkaRezervaci), "Rezervaci není možné zrušit po uzávěrce rezervací na daný termín.");
+
+			rezervaceTerminuRepository.Odstran(rezervace);
+
+			// snížení počtu rezervací u danémo termínu rezervace, popř. prušení termínu rezervace, pokud byla zrušena poslední rezervace na daný termín
+			terminRezervaceRepository.Lock(terminRezervace);
+			if (!terminRezervace.SnizitPocetRezervaci())
+			{
+				terminRezervaceRepository.Odstran(terminRezervace);
+			}
+			else
+			{
+				terminRezervaceRepository.Uloz(terminRezervace);
+			}
+		}
+
 		public void RegistrovatKlientaUPoskytovatele(int idKlienta, int idPoskytovatele)
 		{
 

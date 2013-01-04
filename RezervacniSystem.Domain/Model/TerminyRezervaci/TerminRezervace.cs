@@ -42,5 +42,19 @@ namespace RezervacniSystem.Domain.Model.TerminyRezervaci
 				throw new ArgumentException("Byl dosažen maximální počet rezervací pro daný termín.");
 			}
 		}
+
+		/// <summary>
+		/// Sníží počet rezervací na daný termín a vrátí příznak, zda ještě nějaké rezervace tohoto termínu existují
+		/// </summary>
+		/// <returns></returns>
+		public virtual bool SnizitPocetRezervaci()
+		{
+			if (PocetRezervaci > 0)
+			{
+				PocetRezervaci--;
+			}
+
+			return PocetRezervaci > 0;
+		}
 	}
 }

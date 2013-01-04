@@ -15,7 +15,7 @@
 		<asp:UpdatePanel ID="UpdatePanel1" runat="server">
 			<ContentTemplate>
 				<asp:CheckBox ID="chkPouzePlatne" runat="server" CssClass="checkbox" Text="zobrazit pouze aktuálně platné rezervace" AutoPostBack="true" OnCheckedChanged="chkPouzePlatne_CheckedChanged" />
-				<asp:GridView ID="gvRezervace" runat="server" DataKeyNames="Id" AutoGenerateColumns="false" OnRowCommand="gvRezervace_RowCommand">
+				<asp:GridView ID="gvRezervace" runat="server" DataKeyNames="Id" AutoGenerateColumns="false" OnRowDataBound="gvRezervace_RowDataBound" OnRowCommand="gvRezervace_RowCommand">
 					<EmptyDataTemplate>
 						Nebyly nalezeny žádné rezervace.
 					</EmptyDataTemplate>
@@ -28,10 +28,12 @@
 						<%--<asp:BoundField HeaderText="Doba trvání" DataField="DobaTrvani" ItemStyle-Width="15%" DataFormatString="{0:g}" />--%>
 						<asp:BoundField HeaderText="Událost" DataField="Udalost" ItemStyle-Width="31%" />
 						<asp:BoundField HeaderText="Poskytovatel" DataField="Poskytovatel" ItemStyle-Width="32%" />
-						<asp:ButtonField Text="Zrušit" CommandName="zrusit" />
+						<asp:ButtonField Text="Zrušit" CommandName="Zrusit" />
 					</Columns>
 					<AlternatingRowStyle BackColor="#e5e5e5" />
 				</asp:GridView>
+				<br />
+				<asp:Label ID="lblChybaPriZruseniTerminu" runat="server" CssClass="message-error" Visible="false" />
 			</ContentTemplate>
 		</asp:UpdatePanel>
 	</section>

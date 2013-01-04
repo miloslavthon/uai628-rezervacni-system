@@ -10,5 +10,7 @@ namespace RezervacniSystem.Domain.Model.TerminyRezervaci
 	{
 		TerminRezervace VratTerminRezervaceDleDataProUpravy(int idTerminuUdalosti, DateTime datum);
 		void Uloz(TerminRezervace terminRezervace);
+		void Lock(TerminRezervace terminRezervace);
+		void Odstran(TerminRezervace terminRezervace);
 	}
 }
