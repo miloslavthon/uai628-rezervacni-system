@@ -53,9 +53,15 @@ namespace RezervacniSystem.Web.Klient
 
 			LinkButton lnkZrusit = (LinkButton)e.Row.Cells[4].Controls[0];
 
-			if (rezervace.Datum < DateTime.Now)
+			DateTime datum = DateTime.Now;
+			if (rezervace.Datum < datum)
 			{
 				e.Row.CssClass = "expired";
+				lnkZrusit.Visible = false;
+			}
+			else if (rezervace.Datum.Subtract(rezervace.UzaverkaRezervaci) < datum)
+			{
+				e.Row.CssClass = "closed";
 				lnkZrusit.Visible = false;
 			}
 			else

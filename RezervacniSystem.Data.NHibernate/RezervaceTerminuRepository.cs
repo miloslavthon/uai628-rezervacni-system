@@ -14,7 +14,7 @@ namespace RezervacniSystem.Data.NHibernate
 		public IList<PrehledRezervace> VratRezervace(int idKlienta, bool pouzeAktualnePlatne)
 		{
 			return CurrentSession.CreateQuery(@"
-				select r.Id, terminRezervace.Datum, terminUdalosti.CasTrvani.DobaTrvani, udalost.Popis, poskytovatel.Nazev
+				select r.Id, terminRezervace.Datum, terminUdalosti.CasTrvani.DobaTrvani, udalost.Popis, poskytovatel.Nazev, terminUdalosti.UzaverkaRezervaci
 				from RezervaceTerminu r
 					join r.Termin terminRezervace
 					join r.Poskytovatel poskytovatel
@@ -25,7 +25,7 @@ namespace RezervacniSystem.Data.NHibernate
 				" order by terminRezervace.Datum")
 				.SetInt32("idKlienta", idKlienta)
 				.Enumerable<Object[]>()
-				.Select(o => new PrehledRezervace((int)o[0], (DateTime)o[1], (TimeSpan)o[2], (String)o[3], (String)o[4]))
+				.Select(o => new PrehledRezervace((int)o[0], (DateTime)o[1], (TimeSpan)o[2], (String)o[3], (String)o[4], (TimeSpan)o[5]))
 				.ToList();
 		}
 
