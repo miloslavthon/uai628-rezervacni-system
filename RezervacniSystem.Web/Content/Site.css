@@ -616,6 +616,10 @@ tr.expired td {
 	background-color: rgb(255, 156, 156);
 }
 
+tr.closed td {
+	background-color: rgb(255, 227, 151);
+}
+
 
 /********************
 *   Mobile Styles   *

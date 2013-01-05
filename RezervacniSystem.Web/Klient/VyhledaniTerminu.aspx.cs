@@ -61,6 +61,24 @@ namespace RezervacniSystem.Web.Klient
 			}
 		}
 
+		protected void gvTerminy_RowDataBound(object sender, GridViewRowEventArgs e)
+		{
+			if (e.Row.RowType != DataControlRowType.DataRow)
+			{
+				return;
+			}
+
+			dynamic termin = e.Row.DataItem;
+
+			LinkButton lnkRezervovat = (LinkButton)e.Row.Cells[4].Controls[0];
+
+			if (termin.Uzavreno)
+			{
+				e.Row.CssClass = "closed";
+				lnkRezervovat.Visible = false;
+			}
+		}
+
 		protected void gvTerminy_RowCommand(object sender, GridViewCommandEventArgs e)
 		{
 			if (e.CommandName == "Rezervovat")
@@ -139,7 +157,8 @@ namespace RezervacniSystem.Web.Klient
 					Datum = t.Item1,
 					DobaTrvani = DateTimeUtils.VypisDobu(t.Item2.CasTrvani.DobaTrvani),
 					UzaverkaRezervaci = DateTimeUtils.VypisDobu(t.Item2.UzaverkaRezervaci),
-					Poznamka = t.Item2.Poznamka
+					Poznamka = t.Item2.Poznamka,
+					Uzavreno = t.Item1.Subtract(t.Item2.UzaverkaRezervaci) < DateTime.Now
 				};
 			}
 		}

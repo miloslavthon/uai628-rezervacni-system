@@ -17,7 +17,7 @@
 		<asp:UpdatePanel ID="UpdatePanel1" runat="server">
 			<ContentTemplate>
 				Týden od <asp:Label ID="lblDatumOd" runat="server" Font-Bold="true"></asp:Label> do <asp:Label ID="lblDatumDo" runat="server" Font-Bold="true"></asp:Label>
-				<asp:GridView ID="gvTerminy" runat="server" DataKeyNames="IdTerminuUdalosti,Datum" AutoGenerateColumns="false" OnRowCommand="gvTerminy_RowCommand">
+				<asp:GridView ID="gvTerminy" runat="server" DataKeyNames="IdTerminuUdalosti,Datum" AutoGenerateColumns="false" OnRowDataBound="gvTerminy_RowDataBound" OnRowCommand="gvTerminy_RowCommand">
 					<EmptyDataTemplate>
 						Pro toto období nejsou k dispozici žádné volné termíny.
 					</EmptyDataTemplate>
