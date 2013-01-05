@@ -14,7 +14,7 @@
 
 		<asp:UpdatePanel ID="UpdatePanel1" runat="server">
 			<ContentTemplate>
-				<asp:CheckBox ID="chkPouzePlatne" runat="server" CssClass="checkbox" Text="zobrazit pouze aktuálně platné rezervace" AutoPostBack="true" OnCheckedChanged="chkPouzePlatne_CheckedChanged" />
+				<asp:CheckBox ID="chkPouzePlatne" runat="server" CssClass="checkbox" Checked="true" Text="zobrazit pouze aktuálně platné rezervace" AutoPostBack="true" OnCheckedChanged="chkPouzePlatne_CheckedChanged" />
 				<asp:GridView ID="gvRezervace" runat="server" DataKeyNames="Id" AutoGenerateColumns="false" OnRowDataBound="gvRezervace_RowDataBound" OnRowCommand="gvRezervace_RowCommand">
 					<EmptyDataTemplate>
 						Nebyly nalezeny žádné rezervace.

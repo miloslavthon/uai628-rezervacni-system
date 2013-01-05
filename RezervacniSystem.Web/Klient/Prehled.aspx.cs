@@ -49,8 +49,19 @@ namespace RezervacniSystem.Web.Klient
 				return;
 			}
 
+			PrehledRezervace rezervace = (PrehledRezervace)e.Row.DataItem;
+
 			LinkButton lnkZrusit = (LinkButton)e.Row.Cells[4].Controls[0];
-			lnkZrusit.OnClientClick = "if (!confirm('Opravdu chcete zrušit vybranou rezervaci?')) { return false; }";
+
+			if (rezervace.Datum < DateTime.Now)
+			{
+				e.Row.CssClass = "expired";
+				lnkZrusit.Visible = false;
+			}
+			else
+			{
+				lnkZrusit.OnClientClick = "if (!confirm('Opravdu chcete zrušit vybranou rezervaci?')) { return false; }";
+			}
 		}
 
 		protected void gvRezervace_RowCommand(object sender, GridViewCommandEventArgs e)

@@ -612,6 +612,10 @@ tr.pager td {
     padding: 0 0.25em 0 0;
 }
 
+tr.expired td {
+	background-color: rgb(255, 156, 156);
+}
+
 
 /********************
 *   Mobile Styles   *
