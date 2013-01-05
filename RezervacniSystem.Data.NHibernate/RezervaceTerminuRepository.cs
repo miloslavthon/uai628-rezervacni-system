@@ -29,6 +29,21 @@ namespace RezervacniSystem.Data.NHibernate
 				.ToList();
 		}
 
+		public IList<RezervaceTerminu> VratRezervace(int idTerminuRezervace)
+		{
+			return CurrentSession.CreateQuery(@"
+				select r
+				from RezervaceTerminu r
+					join r.Termin terminRezervace
+					join r.Klient klient
+				where
+					terminRezervace.Id = :idTerminuRezervace
+				order by
+					klient.Prijmeni, klient.Jmeno")
+				.SetInt32("idTerminuRezervace", idTerminuRezervace)
+				.List<RezervaceTerminu>();
+		}
+
 		public int VratPocetAktualnePlatnychRezervaci(int idKlienta, int idPoskytovatele)
 		{
 			return Query

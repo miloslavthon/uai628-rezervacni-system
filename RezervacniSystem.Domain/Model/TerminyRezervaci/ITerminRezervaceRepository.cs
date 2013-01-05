@@ -8,7 +8,9 @@ namespace RezervacniSystem.Domain.Model.TerminyRezervaci
 {
 	public interface ITerminRezervaceRepository
 	{
+		TerminRezervace Vrat(int id);
 		TerminRezervace VratTerminRezervaceDleDataProUpravy(int idTerminuUdalosti, DateTime datum);
+		IList<TerminRezervace> NajdiTerminyRezervaci(int idUdalosti, DateTime datumOd, DateTime datumDo);
 		void Uloz(TerminRezervace terminRezervace);
 		void Lock(TerminRezervace terminRezervace);
 		void Odstran(TerminRezervace terminRezervace);

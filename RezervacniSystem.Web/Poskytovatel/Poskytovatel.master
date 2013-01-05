@@ -12,7 +12,8 @@
 			<nav>
 				<ul id="submenu">
 					<li><a id="A1" runat="server" href="~/Poskytovatel/Udalosti.aspx">Události</a></li>
-					<li><a id="A2" runat="server" href="~/Poskytovatel/PrehledKlientu.aspx">Přehled klientů</a></li>
+					<li><a id="A2" runat="server" href="~/Poskytovatel/PrehledRezervovanychTerminu.aspx">Přehled rezervací</a></li>
+					<li><a id="A3" runat="server" href="~/Poskytovatel/PrehledKlientu.aspx">Přehled klientů</a></li>
 				</ul>
 			</nav>
 		</div>

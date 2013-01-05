@@ -205,6 +205,8 @@
     <Content Include="packages.config" />
     <Content Include="Klient\Web.config" />
     <Content Include="Poskytovatel\PrehledKlientu.aspx" />
+    <Content Include="Poskytovatel\PrehledRezervaci.aspx" />
+    <Content Include="Poskytovatel\PrehledRezervovanychTerminu.aspx" />
     <Content Include="Poskytovatel\Udalosti.aspx" />
     <Content Include="Poskytovatel\UpravaUdalosti.aspx" />
     <Content Include="Poskytovatel\Web.config" />
@@ -382,6 +384,20 @@
     </Compile>
     <Compile Include="Poskytovatel\PrehledKlientu.aspx.designer.cs">
       <DependentUpon>PrehledKlientu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Poskytovatel\PrehledRezervaci.aspx.cs">
+      <DependentUpon>PrehledRezervaci.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Poskytovatel\PrehledRezervaci.aspx.designer.cs">
+      <DependentUpon>PrehledRezervaci.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Poskytovatel\PrehledRezervovanychTerminu.aspx.cs">
+      <DependentUpon>PrehledRezervovanychTerminu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Poskytovatel\PrehledRezervovanychTerminu.aspx.designer.cs">
+      <DependentUpon>PrehledRezervovanychTerminu.aspx</DependentUpon>
     </Compile>
     <Compile Include="Poskytovatel\Udalosti.aspx.cs">
       <DependentUpon>Udalosti.aspx</DependentUpon>

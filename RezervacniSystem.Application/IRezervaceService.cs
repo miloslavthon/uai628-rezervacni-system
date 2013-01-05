@@ -15,5 +15,6 @@ namespace RezervacniSystem.Application
 		void SchvalitRegistraciKlienta(int idPozadavkuNaRegistraci);
 		void OdmitnoutRegistraciKlienta(int idPozadavkuNaRegistraci);
 		void ZrusitRezervaciZeStranyKlienta(int idRezervace);
+		void ZrusitRezervaciZeStranyPoskytovatele(int idRezervace);
 	}
 }

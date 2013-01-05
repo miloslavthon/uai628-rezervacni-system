@@ -151,7 +151,7 @@ namespace RezervacniSystem.Application.Impl
 
 			rezervaceTerminuRepository.Odstran(rezervace);
 
-			// snížení počtu rezervací u danémo termínu rezervace, popř. prušení termínu rezervace, pokud byla zrušena poslední rezervace na daný termín
+			// snížení počtu rezervací u danémo termínu rezervace, popř. zrušení termínu rezervace, pokud byla zrušena poslední rezervace na daný termín
 			terminRezervaceRepository.Lock(terminRezervace);
 			if (!terminRezervace.SnizitPocetRezervaci())
 			{
@@ -163,19 +163,43 @@ namespace RezervacniSystem.Application.Impl
 			}
 		}
 
+		[Transaction]
+		public void ZrusitRezervaciZeStranyPoskytovatele(int idRezervace)
+		{
+			RezervaceTerminu rezervace = rezervaceTerminuRepository.Vrat(idRezervace);
+			Validate.NotNull(rezervace, "Musí být určena platná rezervace.");
+			Validate.IsTrue(rezervace.Termin.Datum > DateTime.Now, "Není možné zrušit rezervaci termínu, který již uplynul.");
+
+			rezervaceTerminuRepository.Odstran(rezervace);
+
+			// snížení počtu rezervací u danémo termínu rezervace, popř. zrušení termínu rezervace, pokud byla zrušena poslední rezervace na daný termín
+			TerminRezervace terminRezervace = rezervace.Termin;
+			terminRezervaceRepository.Lock(terminRezervace);
+			if (!terminRezervace.SnizitPocetRezervaci())
+			{
+				terminRezervaceRepository.Odstran(terminRezervace);
+			}
+			else
+			{
+				terminRezervaceRepository.Uloz(terminRezervace);
+			}
+
+			// TODO: doplnit upozornění klienta na zrušení rezervace
+		}
+
 		public void RegistrovatKlientaUPoskytovatele(int idKlienta, int idPoskytovatele)
 		{
-
+			// TODO: 
 		}
 
 		public void SchvalitRegistraciKlienta(int idPozadavkuNaRegistraci)
 		{
-
+			// TODO: 
 		}
 
 		public void OdmitnoutRegistraciKlienta(int idPozadavkuNaRegistraci)
 		{
-
+			// TODO: 
 		}
 	}
 }
