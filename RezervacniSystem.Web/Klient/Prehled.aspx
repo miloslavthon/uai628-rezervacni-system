@@ -10,9 +10,34 @@
 	<hr />
 
 	<section>
+		<label>Zprávy</label>
+
+		<asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
+			<ContentTemplate>
+				<asp:GridView ID="gvZpravy" runat="server" DataKeyNames="Id" AutoGenerateColumns="false" OnRowDataBound="gvZpravy_RowDataBound" OnRowCommand="gvZpravy_RowCommand">
+					<EmptyDataTemplate>
+						Nejsou pro Vás připraveny žádné zprávy.
+					</EmptyDataTemplate>
+					<EmptyDataRowStyle Font-Italic="true" />
+					<Columns>
+						<asp:BoundField HeaderText="Datum" DataField="Datum" ItemStyle-Width="15%" DataFormatString="{0:g}" />
+						<asp:BoundField HeaderText="Text" DataField="Text" ItemStyle-Width="85%" />
+						<asp:ButtonField Text="Smazat" CommandName="Smazat" />
+					</Columns>
+					<AlternatingRowStyle BackColor="#e5e5e5" />
+				</asp:GridView>
+				<br />
+				<asp:Label ID="lblChybaPriSmazaniZpravy" runat="server" CssClass="message-error" Visible="false" />
+			</ContentTemplate>
+		</asp:UpdatePanel>
+	</section>
+
+	<hr />
+
+	<section>
 		<label>Přehled provedených rezervací</label>
 
-		<asp:UpdatePanel ID="UpdatePanel1" runat="server">
+		<asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
 			<ContentTemplate>
 				<asp:CheckBox ID="chkPouzePlatne" runat="server" CssClass="checkbox" Checked="true" Text="zobrazit pouze aktuálně platné rezervace" AutoPostBack="true" OnCheckedChanged="chkPouzePlatne_CheckedChanged" />
 				<asp:GridView ID="gvRezervace" runat="server" DataKeyNames="Id" AutoGenerateColumns="false" OnRowDataBound="gvRezervace_RowDataBound" OnRowCommand="gvRezervace_RowCommand">

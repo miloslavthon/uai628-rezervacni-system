@@ -1,4 +1,5 @@
 ﻿using RezervacniSystem.Domain.Model.Klienti;
+using RezervacniSystem.Domain.Model.KlientskeZpravy;
 using RezervacniSystem.Domain.Model.Poskytovatele;
 using RezervacniSystem.Domain.Model.RegistraceKlienta;
 using RezervacniSystem.Domain.Model.Rezervace;
@@ -24,8 +25,9 @@ namespace RezervacniSystem.Application.Impl
 		private readonly ITerminRezervaceRepository terminRezervaceRepository;
 		private readonly IRezervaceTerminuRepository rezervaceTerminuRepository;
 		private readonly IRegistraceKlientaRepository registraceKlientaRepository;
+		private readonly IKlientskaZpravaRepository klientskaZpravaRepository;
 
-		public RezervaceService(IPoskytovatelRepository poskytovatelRepository, IUdalostRepository udalostRepository, ITerminUdalostiRepository terminUdalostiRepository, IKlientRepository klientRepository, ITerminRezervaceRepository terminRezervaceRepository, IRezervaceTerminuRepository rezervaceTerminuRepository, IRegistraceKlientaRepository registraceKlientaRepository)
+		public RezervaceService(IPoskytovatelRepository poskytovatelRepository, IUdalostRepository udalostRepository, ITerminUdalostiRepository terminUdalostiRepository, IKlientRepository klientRepository, ITerminRezervaceRepository terminRezervaceRepository, IRezervaceTerminuRepository rezervaceTerminuRepository, IRegistraceKlientaRepository registraceKlientaRepository, IKlientskaZpravaRepository klientskaZpravaRepository)
 		{
 			this.poskytovatelRepository = poskytovatelRepository;
 			this.udalostRepository = udalostRepository;
@@ -34,6 +36,7 @@ namespace RezervacniSystem.Application.Impl
 			this.terminRezervaceRepository = terminRezervaceRepository;
 			this.rezervaceTerminuRepository = rezervaceTerminuRepository;
 			this.registraceKlientaRepository = registraceKlientaRepository;
+			this.klientskaZpravaRepository = klientskaZpravaRepository;
 		}
 
 		public List<Tuple<DateTime, TerminUdalosti>> VyhledatVolneTerminy(int idUdalosti, DateTime datumOd, DateTime datumDo)
@@ -184,7 +187,7 @@ namespace RezervacniSystem.Application.Impl
 				terminRezervaceRepository.Uloz(terminRezervace);
 			}
 
-			// TODO: doplnit upozornění klienta na zrušení rezervace
+			klientskaZpravaRepository.Uloz(new KlientskaZprava(rezervace.Klient, "Termín rezervace " + terminRezervace.Datum.ToString("g") + " události " + terminRezervace.TerminUdalosti.Udalost.Nazev + " byl zrušen ze strany poskytovatele."));
 		}
 
 		public void RegistrovatKlientaUPoskytovatele(int idKlienta, int idPoskytovatele)

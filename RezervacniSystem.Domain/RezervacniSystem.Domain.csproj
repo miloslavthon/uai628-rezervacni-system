@@ -38,6 +38,8 @@
   <ItemGroup>
     <Compile Include="Model\Klienti\IKlientRepository.cs" />
     <Compile Include="Model\Klienti\Klient.cs" />
+    <Compile Include="Model\KlientskeZpravy\KlientskaZprava.cs" />
+    <Compile Include="Model\KlientskeZpravy\IKlientskaZpravaRepository.cs" />
     <Compile Include="Model\Poskytovatele\IPoskytovatelRepository.cs" />
     <Compile Include="Model\Poskytovatele\Poskytovatel.cs" />
     <Compile Include="Model\Poskytovatele\TypRezervace.cs" />

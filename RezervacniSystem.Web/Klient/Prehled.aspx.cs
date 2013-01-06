@@ -1,6 +1,7 @@
 ﻿using Common.Logging;
 using RezervacniSystem.Application;
 using RezervacniSystem.Domain.Model.Klienti;
+using RezervacniSystem.Domain.Model.KlientskeZpravy;
 using RezervacniSystem.Domain.Model.Rezervace;
 using System;
 using System.Collections;
@@ -17,11 +18,13 @@ namespace RezervacniSystem.Web.Klient
 		private static readonly ILog log = LogManager.GetLogger(typeof(Prehled));
 
 		public IKlientRepository KlientRepository { get; set; }
+		public IKlientskaZpravaRepository KlientskaZpravaRepository { get; set; }
 		public IRezervaceTerminuRepository RezervaceTerminuRepository { get; set; }
 		public IRezervaceService RezervaceService { get; set; }
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
+			lblChybaPriSmazaniZpravy.Visible = false;
 			lblChybaPriZruseniTerminu.Visible = false;
 
 			if (!IsPostBack)
@@ -33,7 +36,49 @@ namespace RezervacniSystem.Web.Klient
 					SpravaUzivatelu.IdKlienta = idKlienta;
 				}
 
+				NactiZpravy();
 				NactiRezervace();
+			}
+		}
+
+		protected void gvZpravy_RowDataBound(object sender, GridViewRowEventArgs e)
+		{
+			if (e.Row.RowType != DataControlRowType.DataRow)
+			{
+				return;
+			}
+
+			LinkButton lnkSmazat = (LinkButton)e.Row.Cells[2].Controls[0];
+			lnkSmazat.OnClientClick = "if (!confirm('Opravdu chcete smazat vybranou zprávu?')) { return false; }";
+		}
+
+		protected void gvZpravy_RowCommand(object sender, GridViewCommandEventArgs e)
+		{
+			if (e.CommandName == "Smazat")
+			{
+				gvZpravy.SelectedIndex = int.Parse((String)e.CommandArgument);
+				int idZpravy = (int)gvZpravy.DataKeys[int.Parse((String)e.CommandArgument)].Value;
+
+				try
+				{
+					KlientskaZpravaRepository.Odstran(idZpravy);
+				}
+				catch (ArgumentException ex)
+				{
+					lblChybaPriSmazaniZpravy.Text = ex.Message;
+					lblChybaPriSmazaniZpravy.Visible = true;
+
+					log.Warn("Při smazání zprávy došlo k chybě.", ex);
+				}
+				catch (Exception ex)
+				{
+					lblChybaPriSmazaniZpravy.Text = "Při smazání zprávy došlo k neočekávané chybě.";
+					lblChybaPriSmazaniZpravy.Visible = true;
+
+					log.Warn("Při smazání zprávy došlo k chybě.", ex);
+				}
+
+				NactiZpravy();
 			}
 		}
 
@@ -98,6 +143,12 @@ namespace RezervacniSystem.Web.Klient
 
 				NactiRezervace();
 			}
+		}
+
+		private void NactiZpravy()
+		{
+			gvZpravy.DataSource = KlientskaZpravaRepository.VratZpravy(SpravaUzivatelu.IdKlienta);
+			gvZpravy.DataBind();
 		}
 
 		private void NactiRezervace()
