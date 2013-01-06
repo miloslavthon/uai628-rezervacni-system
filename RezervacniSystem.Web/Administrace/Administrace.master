@@ -9,12 +9,12 @@
 			<hgroup class="title">
 				<h1>Administrace.</h1>
 			</hgroup>
-			<nav>
+			<%--<nav>
 				<ul id="submenu">
 					<li><a id="A1" runat="server" href="~/Administrace/Poskytovatele.aspx">Poskytovatelé</a></li>
 					<li><a id="A2" runat="server" href="~/Administrace/Uzivatele.aspx">Uživatelé</a></li>
 				</ul>
-			</nav>
+			</nav>--%>
 		</div>
 	</section>
 </asp:Content>
