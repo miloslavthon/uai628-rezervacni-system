@@ -50,6 +50,7 @@
     <Compile Include="KlientskaZpravaRepository.cs" />
     <Compile Include="NHibernateRepository.cs" />
     <Compile Include="PoskytovatelRepository.cs" />
+    <Compile Include="PozadavekNaRegistraciKlientaRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistraceKlientaRepository.cs" />
     <Compile Include="RezervaceTerminuRepository.cs" />
@@ -86,6 +87,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mappings\KlientskaZprava.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\PozadavekNaRegistraciKlienta.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

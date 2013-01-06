@@ -39,10 +39,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Impl\RegistraceKlientaUPoskytovateleService.cs" />
     <Compile Include="Impl\RezervaceService.cs" />
     <Compile Include="Impl\SpravaPoskytovateluService.cs" />
     <Compile Include="Impl\SpravaTerminuService.cs" />
     <Compile Include="Impl\SpravaUdalostiService.cs" />
+    <Compile Include="IRegistraceKlientaUPoskytovateleService.cs" />
     <Compile Include="IRezervaceService.cs" />
     <Compile Include="ISpravaPoskytovateluService.cs" />
     <Compile Include="ISpravaTerminuService.cs" />

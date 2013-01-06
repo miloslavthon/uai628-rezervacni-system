@@ -58,6 +58,42 @@ namespace RezervacniSystem.Web.Klient {
         protected global::System.Web.UI.WebControls.GridView gvPoskytovatele;
         
         /// <summary>
+        /// divRegistrace control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divRegistrace;
+        
+        /// <summary>
+        /// btnRegistrovat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRegistrovat;
+        
+        /// <summary>
+        /// lblZpravaORegistrani control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblZpravaORegistrani;
+        
+        /// <summary>
+        /// lblChybaPriRegistraci control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblChybaPriRegistraci;
+        
+        /// <summary>
         /// gvUdalosti control.
         /// </summary>
         /// <remarks>

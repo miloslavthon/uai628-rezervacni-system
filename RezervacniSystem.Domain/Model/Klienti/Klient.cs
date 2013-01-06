@@ -26,6 +26,14 @@ namespace RezervacniSystem.Domain.Model.Klienti
 		public virtual String Prijmeni { get; set; }
 		public virtual String Adresa { get; set; }
 
+		public virtual String CeleJmeno
+		{
+			get
+			{
+				return Jmeno + " " + Prijmeni;
+			}
+		}
+
 		public virtual void NastavUdaje(String jmeno, String prijmeni, String adresa)
 		{
 			Validate.NotNullOrEmpty(jmeno, "Klient musí mít vyplněné jméno.");

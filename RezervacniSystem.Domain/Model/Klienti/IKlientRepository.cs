@@ -12,6 +12,7 @@ namespace RezervacniSystem.Domain.Model.Klienti
 		Klient VratProUpravy(int id);
 		Klient VratKlientaDleUzivatelskehoJmena(String uzivatelskeJmeno);
 		int VratIdKlientaDleUzivatelskehoJmena(String uzivatelskeJmeno);
+		IList<Klient> VratRegistrovaneKlienty(int idPoskytovatele);
 		void Uloz(Klient klient);
 	}
 }

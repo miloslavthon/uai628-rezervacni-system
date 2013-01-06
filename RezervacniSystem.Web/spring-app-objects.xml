@@ -12,6 +12,7 @@
 	<object id="RezervaceTerminuRepository" parent="Repository" type="RezervacniSystem.Data.NHibernate.RezervaceTerminuRepository, RezervacniSystem.Data.NHibernate" />
 	<object id="RegistraceKlientaRepository" parent="Repository" type="RezervacniSystem.Data.NHibernate.RegistraceKlientaRepository, RezervacniSystem.Data.NHibernate" />
 	<object id="KlientskaZpravaRepository" parent="Repository" type="RezervacniSystem.Data.NHibernate.KlientskaZpravaRepository, RezervacniSystem.Data.NHibernate" />
+	<object id="PozadavekNaRegistraciKlientaRepository" parent="Repository" type="RezervacniSystem.Data.NHibernate.PozadavekNaRegistraciKlientaRepository, RezervacniSystem.Data.NHibernate" />
 
 	<object id="UdalostFactory" type="RezervacniSystem.Domain.Model.Udalosti.UdalostFactory, RezervacniSystem.Domain">
 		<constructor-arg ref="PoskytovatelRepository" />
@@ -40,6 +41,13 @@
 		<constructor-arg ref="TerminRezervaceRepository" />
 		<constructor-arg ref="RezervaceTerminuRepository" />
 		<constructor-arg ref="RegistraceKlientaRepository" />
+		<constructor-arg ref="KlientskaZpravaRepository" />
+	</object>
+	<object id="RegistraceKlientaUPoskytovateleService" type="RezervacniSystem.Application.Impl.RegistraceKlientaUPoskytovateleService, RezervacniSystem.Application">
+		<constructor-arg ref="PoskytovatelRepository" />
+		<constructor-arg ref="KlientRepository" />
+		<constructor-arg ref="RegistraceKlientaRepository" />
+		<constructor-arg ref="PozadavekNaRegistraciKlientaRepository" />
 		<constructor-arg ref="KlientskaZpravaRepository" />
 	</object>
 </objects>

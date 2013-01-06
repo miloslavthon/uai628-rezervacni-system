@@ -18,5 +18,21 @@ namespace RezervacniSystem.Data.NHibernate
 		{
 			return Query.Where(k => k.UzivatelskeJmeno == uzivatelskeJmeno).Select(k => k.Id).SingleOrDefault<int>();
 		}
+
+		public IList<Klient> VratRegistrovaneKlienty(int idPoskytovatele)
+		{
+			return CurrentSession.CreateSQLQuery(@"
+					SELECT
+						{Klient.*}
+					FROM
+						Klient
+						INNER JOIN RegistraceKlienta ON RegistraceKlienta.IdKlienta = Klient.Id
+					WHERE
+						RegistraceKlienta.IdPoskytovatele = :idPoskytovatele
+				")
+				.AddEntity(typeof(Klient))
+				.SetInt32("idPoskytovatele", idPoskytovatele)
+				.List<Klient>();
+		}
 	}
 }

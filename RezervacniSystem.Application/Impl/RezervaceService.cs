@@ -189,20 +189,5 @@ namespace RezervacniSystem.Application.Impl
 
 			klientskaZpravaRepository.Uloz(new KlientskaZprava(rezervace.Klient, "Termín rezervace " + terminRezervace.Datum.ToString("g") + " události " + terminRezervace.TerminUdalosti.Udalost.Nazev + " byl zrušen ze strany poskytovatele."));
 		}
-
-		public void RegistrovatKlientaUPoskytovatele(int idKlienta, int idPoskytovatele)
-		{
-			// TODO: 
-		}
-
-		public void SchvalitRegistraciKlienta(int idPozadavkuNaRegistraci)
-		{
-			// TODO: 
-		}
-
-		public void OdmitnoutRegistraciKlienta(int idPozadavkuNaRegistraci)
-		{
-			// TODO: 
-		}
 	}
 }

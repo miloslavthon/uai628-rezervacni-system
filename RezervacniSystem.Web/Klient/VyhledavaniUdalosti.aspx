@@ -26,6 +26,15 @@
 					<AlternatingRowStyle BackColor="#e5e5e5" />
 					<SelectedRowStyle BackColor="#b8ddeb" />
 				</asp:GridView>
+				<div id="divRegistrace" runat="server" visible="false">
+					<hr />
+					<label>Upozornění</label>
+					<p>Rezervace u vybraného poskytovatele služeb vyžadují schválení registrace klienta.</p>
+					<asp:Button ID="btnRegistrovat" runat="server" Text="Registrovat u poskytovatele" OnClick="btnRegistrovat_Click" />
+				</div>
+				<br />
+				<asp:Label ID="lblZpravaORegistrani" runat="server" CssClass="message-success" Visible="false" />
+				<asp:Label ID="lblChybaPriRegistraci" runat="server" CssClass="message-error" Visible="false" />
 			</section>
 
 			<hr />

@@ -1,4 +1,7 @@
-﻿using RezervacniSystem.Domain.Model.Poskytovatele;
+﻿using Common.Logging;
+using RezervacniSystem.Application;
+using RezervacniSystem.Domain.Model.Poskytovatele;
+using RezervacniSystem.Domain.Model.RegistraceKlienta;
 using RezervacniSystem.Domain.Model.Udalosti;
 using System;
 using System.Collections.Generic;
@@ -11,11 +14,18 @@ namespace RezervacniSystem.Web.Klient
 {
 	public partial class VyhledavaniUdalosti : BasePage
 	{
+		private static readonly ILog log = LogManager.GetLogger(typeof(VyhledavaniUdalosti));
+
 		protected IPoskytovatelRepository PoskytovatelRepository { get; set; }
 		protected IUdalostRepository UdalostRepository { get; set; }
+		protected IRegistraceKlientaRepository RegistraceKlientaRepository { get; set; }
+		protected IRegistraceKlientaUPoskytovateleService RegistraceKlientaUPoskytovateleService { get; set; }
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
+			lblZpravaORegistrani.Visible = false;
+			lblChybaPriRegistraci.Visible = false;
+
 			if (!IsPostBack)
 			{
 				NacistPoskytovatele(null);
@@ -31,6 +41,33 @@ namespace RezervacniSystem.Web.Klient
 		{
 			txtHledatPoskytovatele.Text = null;
 			NacistPoskytovatele(null);
+		}
+
+		protected void btnRegistrovat_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				int idPoskytovatele = (int)gvPoskytovatele.SelectedValue;
+				Domain.Model.Poskytovatele.Poskytovatel poskytovatel = PoskytovatelRepository.Vrat(idPoskytovatele);
+
+				RegistraceKlientaUPoskytovateleService.RegistrovatKlientaUPoskytovatele(SpravaUzivatelu.IdKlienta, idPoskytovatele);
+
+				divRegistrace.Visible = false;
+				lblZpravaORegistrani.Visible = true;
+				lblZpravaORegistrani.Text = "Požadavek na registraci u poskytovatele " + poskytovatel.Nazev + " byl uložen. O potvrzení registrace budete informováni.";
+			}
+			catch (ArgumentException ex)
+			{
+				lblChybaPriRegistraci.Text = ex.Message;
+				lblChybaPriRegistraci.Visible = true;
+				log.Warn("Při vytváření požadavku na registraci klienta u poskytovatele došlo k chybě.", ex);
+			}
+			catch (Exception ex)
+			{
+				lblChybaPriRegistraci.Text = "Při vytváření požadavku na registraci klienta u poskytovatele došlo k neočekávané chybě.";
+				lblChybaPriRegistraci.Visible = true;
+				log.Error("Při vytváření požadavku na registraci klienta u poskytovatele došlo k chybě.", ex);
+			}
 		}
 
 		private void NacistPoskytovatele(String filtr)
@@ -49,6 +86,9 @@ namespace RezervacniSystem.Web.Klient
 			{
 				gvPoskytovatele.SelectedIndex = int.Parse((String)e.CommandArgument);
 				int idPoskytovatele = (int)gvPoskytovatele.DataKeys[int.Parse((String)e.CommandArgument)].Value;
+
+				Domain.Model.Poskytovatele.Poskytovatel poskytovatel = PoskytovatelRepository.Vrat(idPoskytovatele);
+				divRegistrace.Visible = poskytovatel.RegistraceKlientuPodlehaSchvaleni && !RegistraceKlientaRepository.MaKlientRegistraci(SpravaUzivatelu.IdKlienta, idPoskytovatele);
 
 				NacistUdalostiPoskytovatele(idPoskytovatele);
 			}

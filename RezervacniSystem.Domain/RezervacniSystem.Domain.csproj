@@ -43,6 +43,8 @@
     <Compile Include="Model\Poskytovatele\IPoskytovatelRepository.cs" />
     <Compile Include="Model\Poskytovatele\Poskytovatel.cs" />
     <Compile Include="Model\Poskytovatele\TypRezervace.cs" />
+    <Compile Include="Model\PozadavkyNaRegistraciKlientu\IPozadavekNaRegistraciKlientaRepository.cs" />
+    <Compile Include="Model\PozadavkyNaRegistraciKlientu\PozadavekNaRegistraciKlienta.cs" />
     <Compile Include="Model\RegistraceKlienta\IRegistraceKlientaRepository.cs" />
     <Compile Include="Model\Rezervace\IRezervaceTerminuRepository.cs" />
     <Compile Include="Model\Rezervace\PrehledRezervace.cs" />
