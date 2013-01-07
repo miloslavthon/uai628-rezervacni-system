@@ -29,7 +29,7 @@ namespace RezervacniSystem.Data.NHibernate
 				.ToList();
 		}
 
-		public IList<RezervaceTerminu> VratRezervace(int idTerminuRezervace)
+		public IList<RezervaceTerminu> VratRezervaceDleTerminuRezervace(int idTerminuRezervace)
 		{
 			return CurrentSession.CreateQuery(@"
 				select r
@@ -41,6 +41,58 @@ namespace RezervacniSystem.Data.NHibernate
 				order by
 					klient.Prijmeni, klient.Jmeno")
 				.SetInt32("idTerminuRezervace", idTerminuRezervace)
+				.List<RezervaceTerminu>();
+		}
+
+		public IList<RezervaceTerminu> VratRezervaceDleTerminuUdalosti(int idTerminuUdalosti)
+		{
+			return CurrentSession.CreateQuery(@"
+				select r
+				from RezervaceTerminu r
+					join r.Termin terminRezervace
+					join terminRezervace.TerminUdalosti terminUdalosti
+					join terminUdalosti.Udalost udalost
+					join r.Klient klient
+				where
+					terminUdalosti.Id = :idTerminuUdalosti
+				order by
+					klient.Prijmeni, klient.Jmeno")
+				.SetInt32("idTerminuUdalosti", idTerminuUdalosti)
+				.List<RezervaceTerminu>();
+		}
+
+		public IList<RezervaceTerminu> VratRezervaceDleUdalosti(int idUdalosti)
+		{
+			return CurrentSession.CreateQuery(@"
+				select r
+				from RezervaceTerminu r
+					join r.Termin terminRezervace
+					join terminRezervace.TerminUdalosti terminUdalosti
+					join terminUdalosti.Udalost udalost
+					join r.Klient klient
+				where
+					udalost.Id = :idUdalosti
+				order by
+					klient.Prijmeni, klient.Jmeno")
+				.SetInt32("idUdalosti", idUdalosti)
+				.List<RezervaceTerminu>();
+		}
+
+		public IList<RezervaceTerminu> VratRezervaceDlePoskytovatele(int idPoskytovatele)
+		{
+			return CurrentSession.CreateQuery(@"
+				select r
+				from RezervaceTerminu r
+					join r.Termin terminRezervace
+					join terminRezervace.TerminUdalosti terminUdalosti
+					join terminUdalosti.Udalost udalost
+					join udalost.Poskytovatel poskytovatel
+					join r.Klient klient
+				where
+					poskytovatel.Id = :idPoskytovatele
+				order by
+					klient.Prijmeni, klient.Jmeno")
+				.SetInt32("idPoskytovatele", idPoskytovatele)
 				.List<RezervaceTerminu>();
 		}
 
@@ -66,6 +118,54 @@ namespace RezervacniSystem.Data.NHibernate
 					)
 				)
 				.RowCount() > 0;
+		}
+
+		public void OdstranRezervaceDleTerminuUdalosti(int idTerminuUdalosti)
+		{
+			CurrentSession.CreateQuery(@"
+				delete RezervaceTerminu r
+				where
+					r.Termin.Id in (
+						select terminRezervace.Id
+						from TerminRezervace terminRezervace
+						where terminRezervace.TerminUdalosti.Id = :idTerminuUdalosti
+					)
+				")
+				.SetParameter("idTerminuUdalosti", idTerminuUdalosti)
+				.ExecuteUpdate();
+		}
+
+		public void OdstranRezervaceDleUdalosti(int idUdalosti)
+		{
+			CurrentSession.CreateQuery(@"
+				delete RezervaceTerminu r
+				where
+					r.Termin.Id in (
+						select terminRezervace.Id
+						from TerminRezervace terminRezervace
+							join terminRezervace.TerminUdalosti terminUdalosti
+						where terminUdalosti.Udalost.Id = :idUdalosti
+					)
+				")
+				.SetParameter("idUdalosti", idUdalosti)
+				.ExecuteUpdate();
+		}
+
+		public void OdstranRezervaceDlePoskytovatele(int idPoskytovatele)
+		{
+			CurrentSession.CreateQuery(@"
+				delete RezervaceTerminu r
+				where
+					r.Termin.Id in (
+						select terminRezervace.Id
+						from TerminRezervace terminRezervace
+							join terminRezervace.TerminUdalosti terminUdalosti
+							join terminUdalosti.Udalost udalost
+						where udalost.Poskytovatel.Id = :idPoskytovatele
+					)
+				")
+				.SetParameter("idPoskytovatele", idPoskytovatele)
+				.ExecuteUpdate();
 		}
 	}
 }

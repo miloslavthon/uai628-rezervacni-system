@@ -1,4 +1,7 @@
-﻿using RezervacniSystem.Domain.Model.Terminy;
+﻿using RezervacniSystem.Domain.Model.KlientskeZpravy;
+using RezervacniSystem.Domain.Model.Rezervace;
+using RezervacniSystem.Domain.Model.Terminy;
+using RezervacniSystem.Domain.Model.TerminyRezervaci;
 using RezervacniSystem.Domain.Model.Udalosti;
 using Spring.Transaction.Interceptor;
 using System;
@@ -13,11 +16,17 @@ namespace RezervacniSystem.Application.Impl
 	{
 		private readonly IUdalostRepository udalostRepository;
 		private readonly ITerminUdalostiRepository terminUdalostiRepository;
+		private readonly IRezervaceTerminuRepository rezervaceTerminuRepository;
+		private readonly IKlientskaZpravaRepository klientskaZpravaRepository;
+		private readonly ITerminRezervaceRepository terminRezervaceRepository;
 
-		public SpravaTerminuService(IUdalostRepository udalostRepository, ITerminUdalostiRepository terminUdalostiRepository)
+		public SpravaTerminuService(IUdalostRepository udalostRepository, ITerminUdalostiRepository terminUdalostiRepository, IRezervaceTerminuRepository rezervaceTerminuRepository, IKlientskaZpravaRepository klientskaZpravaRepository, ITerminRezervaceRepository terminRezervaceRepository)
 		{
 			this.udalostRepository = udalostRepository;
 			this.terminUdalostiRepository = terminUdalostiRepository;
+			this.rezervaceTerminuRepository = rezervaceTerminuRepository;
+			this.klientskaZpravaRepository = klientskaZpravaRepository;
+			this.terminRezervaceRepository = terminRezervaceRepository;
 		}
 
 		[Transaction]
@@ -39,9 +48,16 @@ namespace RezervacniSystem.Application.Impl
 		[Transaction]
 		public void ZrusitTermin(int idTerminu)
 		{
-			// zrušení rezervací
-			// zrušení termínů rezervací
+			foreach (RezervaceTerminu r in rezervaceTerminuRepository.VratRezervaceDleTerminuUdalosti(idTerminu))
+			{
+				klientskaZpravaRepository.Uloz(new KlientskaZprava(r.Klient, "Termín rezervace " + r.Termin.Datum.ToString("g") + " události " + r.Termin.TerminUdalosti.Udalost.Nazev + " byl zrušen ze strany poskytovatele."));
+			}
 
+			// zrušení rezervací
+			rezervaceTerminuRepository.OdstranRezervaceDleTerminuUdalosti(idTerminu);
+			// zrušení termínů rezervací
+			terminRezervaceRepository.OdstranTerminyRezervaciDleTerminuUdalosti(idTerminu);
+			// zrušení termínu události
 			terminUdalostiRepository.Odstran(idTerminu);
 		}
 

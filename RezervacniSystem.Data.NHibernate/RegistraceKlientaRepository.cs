@@ -35,5 +35,12 @@ namespace RezervacniSystem.Data.NHibernate
 				.SetInt32("idPoskytovatele", idPoskytovatele)
 				.ExecuteUpdate();
 		}
+
+		public void ZrusitRegistraceKlientuDlePoskytovatele(int idPoskytovatele)
+		{
+			CurrentSession.CreateSQLQuery("DELETE FROM RegistraceKlienta WHERE idPoskytovatele = :idPoskytovatele")
+				.SetInt32("idPoskytovatele", idPoskytovatele)
+				.ExecuteUpdate();
+		}
 	}
 }

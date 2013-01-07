@@ -22,5 +22,47 @@ namespace RezervacniSystem.Data.NHibernate
 				.And(t => t.Udalost.Id == idUdalosti)
 				.List();
 		}
+
+		public void OdstranTerminyRezervaciDleTerminuUdalosti(int idTerminuUdalosti)
+		{
+			CurrentSession.CreateQuery(@"
+				delete TerminRezervace t
+				where
+					t.TerminUdalosti.Id = :idTerminuUdalosti
+				")
+				.SetParameter("idTerminuUdalosti", idTerminuUdalosti)
+				.ExecuteUpdate();
+		}
+
+		public void OdstranTerminyRezervaciDleUdalosti(int idUdalosti)
+		{
+			CurrentSession.CreateQuery(@"
+				delete TerminRezervace t
+				where
+					t.TerminUdalosti.Id in (
+						select terminUdalosti.Id
+						from TerminUdalosti terminUdalosti
+						where terminUdalosti.Udalost.Id = :idUdalosti
+					)
+				")
+				.SetParameter("idUdalosti", idUdalosti)
+				.ExecuteUpdate();
+		}
+
+		public void OdstranTerminyRezervaciDlePoskytovatele(int idPoskytovatele)
+		{
+			CurrentSession.CreateQuery(@"
+				delete TerminRezervace t
+				where
+					t.TerminUdalosti.Id in (
+						select terminUdalosti.Id
+						from TerminUdalosti terminUdalosti
+							join terminUdalosti.Udalost udalost
+						where udalost.Poskytovatel.Id = :idPoskytovatele
+					)
+				")
+				.SetParameter("idPoskytovatele", idPoskytovatele)
+				.ExecuteUpdate();
+		}
 	}
 }

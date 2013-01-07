@@ -100,7 +100,7 @@ namespace RezervacniSystem.Web.Poskytovatel
 			litMaximalniPocetUcastniku.Text = terminRezervace.TerminUdalosti.Udalost.MaximalniPocetUcastniku == 0 ? "neomezeno" : terminRezervace.TerminUdalosti.Udalost.MaximalniPocetUcastniku.ToString();
 			litPocetRezervaci.Text = terminRezervace.PocetRezervaci.ToString();
 
-			gvRezervace.DataSource = RezervaceTerminuRepository.VratRezervace(terminRezervace.Id);
+			gvRezervace.DataSource = RezervaceTerminuRepository.VratRezervaceDleTerminuRezervace(terminRezervace.Id);
 			gvRezervace.DataBind();
 		}
 	}

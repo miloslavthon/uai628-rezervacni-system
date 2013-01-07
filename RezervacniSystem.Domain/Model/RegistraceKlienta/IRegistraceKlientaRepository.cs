@@ -11,5 +11,6 @@ namespace RezervacniSystem.Domain.Model.RegistraceKlienta
 		bool MaKlientRegistraci(int idKlienta, int idPoskytovatele);
 		void UlozRegistraciKlienta(int idKlienta, int idPoskytovatele);
 		void OdstranRegistraciKlienta(int idKlienta, int idPoskytovatele);
+		void ZrusitRegistraceKlientuDlePoskytovatele(int idPoskytovatele);
 	}
 }

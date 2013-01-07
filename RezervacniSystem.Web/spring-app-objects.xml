@@ -23,15 +23,26 @@
 		<constructor-arg ref="PoskytovatelRepository" />
 		<constructor-arg ref="TerminUdalostiRepository" />
 		<constructor-arg ref="UdalostFactory" />
+		<constructor-arg ref="RezervaceTerminuRepository" />
+		<constructor-arg ref="KlientskaZpravaRepository" />
+		<constructor-arg ref="TerminRezervaceRepository" />
 	</object>
 	<object id="SpravaTerminuService" type="RezervacniSystem.Application.Impl.SpravaTerminuService, RezervacniSystem.Application">
 		<constructor-arg ref="UdalostRepository" />
 		<constructor-arg ref="TerminUdalostiRepository" />
+		<constructor-arg ref="RezervaceTerminuRepository" />
+		<constructor-arg ref="KlientskaZpravaRepository" />
+		<constructor-arg ref="TerminRezervaceRepository" />
 	</object>
 	<object id="SpravaPoskytovateluService" type="RezervacniSystem.Application.Impl.SpravaPoskytovateluService, RezervacniSystem.Application">
 		<constructor-arg ref="PoskytovatelRepository" />
 		<constructor-arg ref="UdalostRepository" />
 		<constructor-arg ref="TerminUdalostiRepository" />
+		<constructor-arg ref="RezervaceTerminuRepository" />
+		<constructor-arg ref="KlientskaZpravaRepository" />
+		<constructor-arg ref="TerminRezervaceRepository" />
+		<constructor-arg ref="RegistraceKlientaRepository" />
+		<constructor-arg ref="KlientRepository" />
 	</object>
 	<object id="RezervaceService" type="RezervacniSystem.Application.Impl.RezervaceService, RezervacniSystem.Application">
 		<constructor-arg ref="PoskytovatelRepository" />

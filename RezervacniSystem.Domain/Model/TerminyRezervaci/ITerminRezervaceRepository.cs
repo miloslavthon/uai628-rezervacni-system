@@ -14,5 +14,8 @@ namespace RezervacniSystem.Domain.Model.TerminyRezervaci
 		void Uloz(TerminRezervace terminRezervace);
 		void Lock(TerminRezervace terminRezervace);
 		void Odstran(TerminRezervace terminRezervace);
+		void OdstranTerminyRezervaciDleTerminuUdalosti(int idTerminuUdalosti);
+		void OdstranTerminyRezervaciDleUdalosti(int idUdalosti);
+		void OdstranTerminyRezervaciDlePoskytovatele(int idPoskytovatele);
 	}
 }
