@@ -18,9 +18,10 @@ namespace RezervacniSystem.Domain.Model.Terminy
 		public TerminUdalosti(Udalost udalost, DateTime datum, CasTrvani casTrvani, TimeSpan uzaverkaRezervaci, String poznamka)
 			: this(udalost, casTrvani, uzaverkaRezervaci, poznamka)
 		{
-			Validate.IsTrue(datum > DateTime.Now, "Zadané datum již nastalo.");
-			Validate.IsTrue(DateTime.Now < datum.Subtract(uzaverkaRezervaci), "Čas uzávěrky rezervací pro zadaný termín již nastal.");
-
+			DateTime casUdalosti = datum.Add(casTrvani.Cas);
+			Validate.IsTrue(casUdalosti > DateTime.Now, "Zadané datum již nastalo.");
+			Validate.IsTrue(DateTime.Now < casUdalosti.Subtract(uzaverkaRezervaci), "Čas uzávěrky rezervací pro zadaný termín již nastal.");
+			
 			this.Typ = TypTerminu.JEDNORAZOVY;
 			this.Datum = datum;
 		}
